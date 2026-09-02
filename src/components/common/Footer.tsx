@@ -18,7 +18,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({
   resumeUrl = '/resume/Rupesh_Kumar_Pandey_Senior_Data_Scientist_Resume.pdf',
-  email = 'rupesh.pandey@example.com',
+  email = 'amerupesh08@gmail.com',
   linkedinUrl = 'https://www.linkedin.com/in/rupesh-kumar-pandey',
   githubUrl = 'https://github.com/Rupesh4113'
 }) => {
@@ -40,7 +40,7 @@ export const Footer: React.FC<FooterProps> = ({
             </p>
             <div className="flex items-center justify-center md:justify-start space-x-1 text-xs text-slate-500">
               <MapPin className="w-3.5 h-3.5 text-cyan-500" />
-              <span>Bengaluru, India</span>
+              <span>Whitefield, Bengaluru, India</span>
             </div>
           </div>
 

@@ -5,16 +5,16 @@ export const initialProfile: Profile = {
   full_name: 'Rupesh Kumar Pandey',
   headline: 'Senior Data Scientist | Machine Learning | AI | Data Analytics',
   supporting_statement: 'Building data-driven solutions that transform complex business problems into measurable outcomes.',
-  short_bio: 'Senior Data Scientist and IT professional with 11+ years of industry experience across Data Science, Machine Learning, analytics, engineering, and technical documentation. Experienced in building predictive analytics and ML solutions for enterprise clients and translating analytical insights into business outcomes.',
+  short_bio: 'Senior Data Scientist and IT Professional with 11+ years of experience across Data Science, Machine Learning, Technical Writing, and Engineering. Over 4 years of hands-on experience delivering predictive analytics and ML solutions in the transportation and logistics domain for enterprise clients such as Blue Yonder. Strong expertise in Python, SQL, data visualization, and end-to-end model development, with proven experience working in fast-paced Bengaluru-based product and services organizations.',
   extended_bio: [
     'Senior Data Scientist & Senior Tech Lead with over 11 years of extensive technology experience, combining 4+ years of specialized data science, machine learning, and statistical modeling with an enterprise engineering foundation.',
     'Currently leading Data Science initiatives at Persistent Systems for Blue Yonder TMS, engineering machine-learning transit-time and ETA prediction models for large-scale transportation datasets integrated directly into core enterprise supply chain modules.',
     'Holds a Master of Data Science (Global) from Deakin University, Australia, along with executive post-graduate qualifications in Data Science & Business Analytics from UT Austin / Great Learning and an MBA in Product & Marketing.',
     'Proven track record spanning Transportation & Logistics, Retail, Telecom, and Aviation with cross-functional experience delivering production ML pipelines, executive analytics dashboards (Power BI & Tableau), and collaborative business solutions.'
   ],
-  location: 'Bengaluru, India',
-  email: 'rupesh.pandey@example.com',
-  phone: '+91 98765 43210',
+  location: 'Whitefield, Bengaluru, India',
+  email: 'amerupesh08@gmail.com',
+  phone: '+91 88673 82604',
   linkedin_url: 'https://www.linkedin.com/in/rupesh-kumar-pandey',
   github_url: 'https://github.com/Rupesh4113',
   avatar_url: '', // Profile image placeholder or uploadable

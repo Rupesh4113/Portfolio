@@ -107,6 +107,7 @@ export const HomePage: React.FC = () => {
 
         <ContactSection
           email={profile.email}
+          phone={profile.phone}
           linkedinUrl={profile.linkedin_url}
           githubUrl={profile.github_url}
           location={profile.location}

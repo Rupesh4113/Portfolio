@@ -20,9 +20,9 @@ INSERT INTO public.profiles (
     "Holds a Master of Data Science (Global) from Deakin University, Australia, along with executive post-graduate qualifications in Data Science & Business Analytics from UT Austin / Great Learning and an MBA in Product & Marketing.",
     "Proven track record spanning Transportation & Logistics, Retail, Telecom, and Aviation with cross-functional experience delivering production ML pipelines, executive analytics dashboards (Power BI & Tableau), and collaborative business solutions."
   ]'::jsonb,
-  'Bengaluru, India',
-  'rupesh.pandey@example.com',
-  '+91 98765 43210',
+  'Whitefield, Bengaluru, India',
+  'amerupesh08@gmail.com',
+  '+91 88673 82604',
   'https://www.linkedin.com/in/rupesh-kumar-pandey',
   'https://github.com/Rupesh4113',
   '',
@@ -39,14 +39,14 @@ VALUES
   ('exp-1', 'Senior Tech Lead – Data Science', 'Persistent Systems', 'Blue Yonder', 'Bengaluru, India', 'Aug 2023 – Present', true, 
    '["Transit-time and ETA prediction models across multi-modal lanes", "Machine-learning model development with large transportation datasets", "ML model evaluation and deployment into TM Configuration, TMIC and Business Analytics modules", "Collaboration with product managers, engineers and business stakeholders", "AI-powered documentation initiatives"]'::jsonb,
    '["Python", "XGBoost", "Time Series", "SQL", "TMS APIs", "Data Modeling"]'::jsonb, 1),
-  ('exp-2', 'Lead – Data Science & Technical Documentation', 'Brillio', 'Enterprise Clients', 'Bengaluru, India', 'Jul 2022 – Jul 2023', false,
+  ('exp-2', 'Lead – Data Science & Technical Documentation', 'Brillio', 'BluePlanet Enterprise (Cienna)', 'Bengaluru, India', 'Jul 2022 – Jul 2023', false,
    '["Structured and unstructured data analysis for actionable business insights", "Tableau and Power BI executive dashboards", "Automated data cleaning and validation protocols", "Synthesized technical predictive results into C-suite presentations"]'::jsonb,
    '["Python", "SQL", "Tableau", "Power BI", "EDA", "Statistical Analysis"]'::jsonb, 2),
-  ('exp-3', 'Lead – Technical Documentation', 'Citixsys', 'Retail Systems', 'Noida, India', 'Feb 2022 – Jun 2022', false,
+  ('exp-3', 'Lead – Technical Documentation', 'Citixsys', 'OneEnterprises', 'Noida, India', 'Feb 2022 – Jun 2022', false,
    '["Power BI and Tableau dashboards for retail trend mining", "Data mining and store inventory velocity analysis", "Analytical decision support documentation for omnichannel POS"]'::jsonb,
    '["Power BI", "Tableau", "SQL", "Data Mining", "Trend Analysis"]'::jsonb, 3),
-  ('exp-4', 'Senior Engineer – Technical Documentation', 'Mindtree', 'Global Tech', 'Bengaluru, India', 'Dec 2021 – Jan 2022', false,
-   '["Authored comprehensive technical architecture documentation", "Collaborated with software development leads and data architects"]'::jsonb,
+  ('exp-4', 'Senior Engineer – Technical Documentation', 'Mindtree', 'Sabre', 'Bengaluru, India', 'Dec 2021 – Jan 2022', false,
+   '["Documented automated seat-allocation systems for airline loyalty platforms", "Assessed data sources and analytics approaches for operational improvements"]'::jsonb,
    '["System Architecture", "Technical Specs", "Data Flow Diagrams"]'::jsonb, 4),
   ('exp-5', 'Senior Engineer – Avionics & Engineering Documentation', 'Sonovision / Ortec Group', 'Airbus', 'Bengaluru, India', 'Aug 2014 – Nov 2021', false,
    '["Engineering diagrams, service bulletins, and aircraft modification specifications", "Compliance documentation for international aviation regulatory authorities", "Knowledge exchange assignment at Airbus Headquarters in Toulouse, France"]'::jsonb,
@@ -80,5 +80,5 @@ VALUES (
   'Portfolio of Rupesh Kumar Pandey, Senior Data Scientist with 11+ years of experience in Machine Learning, Predictive Analytics, Transportation & Logistics, and Retail Analytics.',
   false,
   'dark',
-  'rupesh.pandey@example.com'
+  'amerupesh08@gmail.com'
 ) ON CONFLICT (id) DO NOTHING;

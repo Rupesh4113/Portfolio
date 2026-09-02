@@ -3,6 +3,7 @@ import {
   Mail, 
   Send, 
   MapPin, 
+  Phone,
   CheckCircle2, 
   AlertCircle,
   Clock,
@@ -14,16 +15,18 @@ import { fireConfetti } from '../../lib/utils';
 
 interface ContactSectionProps {
   email?: string;
+  phone?: string;
   linkedinUrl?: string;
   githubUrl?: string;
   location?: string;
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
-  email = 'rupesh.pandey@example.com',
+  email = 'amerupesh08@gmail.com',
+  phone = '+91 88673 82604',
   linkedinUrl = 'https://www.linkedin.com/in/rupesh-kumar-pandey',
   githubUrl = 'https://github.com/Rupesh4113',
-  location = 'Bengaluru, India'
+  location = 'Whitefield, Bengaluru, India'
 }) => {
   const [name, setName] = useState('');
   const [senderEmail, setSenderEmail] = useState('');
@@ -170,8 +173,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
                 </a>
 
+                <a
+                  href={`tel:${phone.replace(/\s+/g, '')}`}
+                  className="flex items-center space-x-3 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-cyan-500/40 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition group"
+                >
+                  <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 group-hover:scale-105 transition-transform">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono text-slate-400 uppercase block">Phone / Mobile</span>
+                    <span className="font-semibold text-slate-800 dark:text-slate-200">{phone}</span>
+                  </div>
+                </a>
+
                 <div className="flex items-center space-x-3 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800">
-                  <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                  <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>

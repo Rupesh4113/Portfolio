@@ -6,5 +6,5 @@ export const initialSettings: SiteSettings = {
   meta_description: 'Portfolio of Rupesh Kumar Pandey, Senior Data Scientist with 11+ years of experience in Machine Learning, Predictive Analytics, Transportation & Logistics, and Retail Analytics.',
   enable_analytics: false,
   theme_default: 'dark',
-  contact_recipient_email: 'rupesh.pandey@example.com'
+  contact_recipient_email: 'amerupesh08@gmail.com'
 };

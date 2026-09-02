@@ -12,7 +12,7 @@ import {
 import { useAuth } from '../../context/AuthContext';
 
 export const AdminLogin: React.FC = () => {
-  const [email, setEmail] = useState('admin@rupeshpandey.dev');
+  const [email, setEmail] = useState('amerupesh08@gmail.com');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
