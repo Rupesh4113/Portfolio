@@ -23,12 +23,12 @@ INSERT INTO public.profiles (
   'Whitefield, Bengaluru, India',
   'amerupesh08@gmail.com',
   '+91 88673 82604',
-  'https://www.linkedin.com/in/rupesh-kumar-pandey',
+  'https://www.linkedin.com/in/rupesh-kumar-pandey-9016543b/',
   'https://github.com/Rupesh4113',
-  './images/profile/rupesh_pandey.jpg',
-  './resume/Rupesh_Kumar_Pandey_Senior_Data_Scientist_Resume.pdf',
-  11,
-  4,
+  'public\favicon.svg',
+  'public\resume\Rupesh Kumar Pandey_Data Scientist.pdf',
+  12,
+  5,
   'Master of Data Science — Deakin University',
   'Blue Yonder / Transportation & Logistics'
 ) ON CONFLICT (id) DO UPDATE SET updated_at = NOW();
@@ -77,7 +77,7 @@ VALUES (
   'primary',
   'Rupesh Kumar Pandey — Senior Data Scientist',
   'Rupesh Kumar Pandey | Senior Data Scientist & AI/ML Leader',
-  'Portfolio of Rupesh Kumar Pandey, Senior Data Scientist with 11+ years of experience in Machine Learning, Predictive Analytics, Transportation & Logistics, and Retail Analytics.',
+  'Portfolio of Rupesh Kumar Pandey, Senior Data Scientist with 12+ years of experience in Machine Learning, Predictive Analytics, Transportation & Logistics, and Retail Analytics.',
   false,
   'dark',
   'amerupesh08@gmail.com'

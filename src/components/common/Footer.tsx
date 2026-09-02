@@ -1,7 +1,7 @@
 import React from 'react';
-import { 
-  Mail, 
-  FileDown, 
+import {
+  Mail,
+  FileDown,
   ArrowUp,
   MapPin,
   Sparkles
@@ -17,9 +17,9 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({
-  resumeUrl = '/resume/Rupesh_Kumar_Pandey_Senior_Data_Scientist_Resume.pdf',
+  resumeUrl = 'public\resume\Rupesh Kumar Pandey_Data Scientist.pdf',
   email = 'amerupesh08@gmail.com',
-  linkedinUrl = 'https://www.linkedin.com/in/rupesh-kumar-pandey',
+  linkedinUrl = 'https://www.linkedin.com/in/rupesh-kumar-pandey-9016543b/',
   githubUrl = 'https://github.com/Rupesh4113'
 }) => {
   const scrollToTop = () => {
@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({
 
             <a
               href={resumeUrl}
-              download="Rupesh_Kumar_Pandey_Senior_Data_Scientist_Resume.pdf"
+              download="public\resume\Rupesh Kumar Pandey_Data Scientist.pdf"
               onClick={fireConfetti}
               className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800/60 text-xs font-mono text-slate-700 dark:text-slate-300 hover:text-cyan-400 transition-colors"
             >
@@ -97,10 +97,6 @@ export const Footer: React.FC<FooterProps> = ({
               <ArrowUp className="w-4 h-4" />
             </button>
           </div>
-        </div>
-
-        <div className="mt-8 pt-6 border-t border-slate-200/60 dark:border-slate-800/40 text-center text-[11px] font-mono text-slate-500">
-          Built with React, TypeScript, Vite, Tailwind CSS & Supabase. Designed for enterprise Data Science leadership.
         </div>
       </div>
     </footer>

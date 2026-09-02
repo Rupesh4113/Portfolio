@@ -1,10 +1,10 @@
 import React from 'react';
-import { 
-  FileDown, 
-  ArrowRight, 
-  Mail, 
-  MapPin, 
-  Sparkles, 
+import {
+  FileDown,
+  ArrowRight,
+  Mail,
+  MapPin,
+  Sparkles,
   Briefcase,
   Terminal
 } from 'lucide-react';
@@ -30,14 +30,14 @@ export const Hero: React.FC<HeroProps> = ({ profile }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Left Hero Narrative */}
           <div className="lg:col-span-8 space-y-6 text-center lg:text-left">
             {/* Status Pills */}
             <div className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2">
               <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-700 dark:text-cyan-300 text-xs font-mono">
                 <span className="h-2 w-2 rounded-full bg-cyan-500 animate-pulse" />
-                <span>Senior Tech Lead @ Persistent Systems (Blue Yonder)</span>
+                <span>Senior Tech Lead @ Persistent Systems</span>
               </div>
               <div className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-mono">
                 <MapPin className="w-3 h-3 text-cyan-500" />
@@ -79,7 +79,7 @@ export const Hero: React.FC<HeroProps> = ({ profile }) => {
 
               <a
                 href={profile.resume_url}
-                download="Rupesh_Kumar_Pandey_Senior_Data_Scientist_Resume.pdf"
+                download="public\resume\Rupesh Kumar Pandey_Data Scientist.pdf"
                 onClick={handleResumeDownload}
                 className="inline-flex items-center space-x-2 px-5 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700/80 text-slate-800 dark:text-slate-200 text-sm font-semibold font-mono shadow-sm transition-all"
               >
@@ -126,9 +126,9 @@ export const Hero: React.FC<HeroProps> = ({ profile }) => {
             <div className="relative w-full max-w-sm">
               {/* Decorative Frame */}
               <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-cyan-500/30 to-blue-600/30 blur-lg opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
-              
+
               <div className="relative rounded-2xl border border-slate-300/80 dark:border-slate-700/80 bg-white dark:bg-slate-900/90 p-6 shadow-2xl backdrop-blur-sm">
-                
+
                 {/* Profile Image or Technical Avatar */}
                 <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-slate-900 border border-slate-200 dark:border-slate-800 mb-6 group">
                   {profile.avatar_url ? (
@@ -176,7 +176,7 @@ export const Hero: React.FC<HeroProps> = ({ profile }) => {
                   <div className="flex items-center justify-between">
                     <span className="text-slate-500">Education</span>
                     <span className="font-semibold text-cyan-600 dark:text-cyan-400">
-                      M.DS (Deakin Univ)
+                      Master of Data Science (Deakin University)
                     </span>
                   </div>
                 </div>

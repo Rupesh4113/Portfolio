@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { 
-  Mail, 
-  Send, 
-  MapPin, 
+import {
+  Mail,
+  Send,
+  MapPin,
   Phone,
-  CheckCircle2, 
+  CheckCircle2,
   AlertCircle,
   Clock,
   Sparkles
@@ -24,7 +24,7 @@ interface ContactSectionProps {
 export const ContactSection: React.FC<ContactSectionProps> = ({
   email = 'amerupesh08@gmail.com',
   phone = '+91 88673 82604',
-  linkedinUrl = 'https://www.linkedin.com/in/rupesh-kumar-pandey',
+  linkedinUrl = 'https://www.linkedin.com/in/rupesh-kumar-pandey-9016543b/',
   githubUrl = 'https://github.com/Rupesh4113',
   location = 'Whitefield, Bengaluru, India'
 }) => {
@@ -32,7 +32,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const [senderEmail, setSenderEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
-  
+
   // Honeypot field for anti-spam bots
   const [companyHoneypot, setCompanyHoneypot] = useState('');
 
@@ -73,7 +73,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       if (ok) {
         setStatusMessage({
           type: 'success',
-          text: 'Message received successfully! Thank you for getting in touch.'
+          text: 'Message sent successfully! Thank you for getting in touch.'
         });
         fireConfetti();
         setName('');
@@ -99,7 +99,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   return (
     <section id="contact" className="py-24 relative scroll-mt-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-mono font-medium">
@@ -116,7 +116,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
         {/* Contact Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Left Info Column (5 Cols) */}
           <div className="lg:col-span-5 space-y-6">
             <div className="p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/90 shadow-lg space-y-6">
@@ -154,7 +154,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
                   <div>
                     <span className="text-[10px] font-mono text-slate-400 uppercase block">LinkedIn</span>
-                    <span className="font-semibold text-slate-800 dark:text-slate-200">linkedin.com/in/rupesh-kumar-pandey</span>
+                    <span className="font-semibold text-slate-800 dark:text-slate-200">https://www.linkedin.com/in/rupesh-kumar-pandey-9016543b/</span>
                   </div>
                 </a>
 
@@ -169,7 +169,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
                   <div>
                     <span className="text-[10px] font-mono text-slate-400 uppercase block">GitHub</span>
-                    <span className="font-semibold text-slate-800 dark:text-slate-200">github.com/Rupesh4113</span>
+                    <span className="font-semibold text-slate-800 dark:text-slate-200">https://github.com/Rupesh4113</span>
                   </div>
                 </a>
 
@@ -277,11 +277,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                 {statusMessage && (
                   <div
-                    className={`p-3.5 rounded-xl text-xs font-mono flex items-center space-x-2 ${
-                      statusMessage.type === 'success'
+                    className={`p-3.5 rounded-xl text-xs font-mono flex items-center space-x-2 ${statusMessage.type === 'success'
                         ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
                         : 'bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20'
-                    }`}
+                      }`}
                   >
                     {statusMessage.type === 'success' ? (
                       <CheckCircle2 className="w-4 h-4 shrink-0" />
