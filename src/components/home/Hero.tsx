@@ -130,15 +130,15 @@ export const Hero: React.FC<HeroProps> = ({ profile }) => {
               <div className="relative rounded-2xl border border-slate-300/80 dark:border-slate-700/80 bg-white dark:bg-slate-900/90 p-6 shadow-2xl backdrop-blur-sm">
                 
                 {/* Profile Image or Technical Avatar */}
-                <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-gradient-to-b from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-950 flex flex-col items-center justify-center p-6 border border-slate-200 dark:border-slate-800 mb-6 group">
+                <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-slate-900 border border-slate-200 dark:border-slate-800 mb-6 group">
                   {profile.avatar_url ? (
                     <img
                       src={profile.avatar_url}
                       alt={profile.full_name}
-                      className="w-full h-full object-cover rounded-lg"
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : (
-                    <div className="text-center space-y-4">
+                    <div className="flex flex-col items-center justify-center p-6 w-full h-full text-center space-y-4">
                       <div className="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-tr from-cyan-500 via-teal-500 to-blue-600 flex items-center justify-center text-white text-3xl font-extrabold font-mono shadow-xl shadow-cyan-500/30">
                         RP
                       </div>
@@ -154,7 +154,7 @@ export const Hero: React.FC<HeroProps> = ({ profile }) => {
                   )}
 
                   {/* Corner Tech Watermark */}
-                  <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-slate-900/80 text-[10px] font-mono text-emerald-400 border border-emerald-500/30">
+                  <div className="absolute bottom-2 right-2 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-md text-[10px] font-mono text-emerald-400 border border-emerald-500/30 shadow-sm">
                     ML • AI • BI
                   </div>
                 </div>

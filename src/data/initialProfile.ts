@@ -17,8 +17,8 @@ export const initialProfile: Profile = {
   phone: '+91 88673 82604',
   linkedin_url: 'https://www.linkedin.com/in/rupesh-kumar-pandey',
   github_url: 'https://github.com/Rupesh4113',
-  avatar_url: '', // Profile image placeholder or uploadable
-  resume_url: '/resume/Rupesh_Kumar_Pandey_Senior_Data_Scientist_Resume.pdf',
+  avatar_url: './images/profile/rupesh_pandey.jpg',
+  resume_url: './resume/Rupesh_Kumar_Pandey_Senior_Data_Scientist_Resume.pdf',
   years_total: 11,
   years_data_science: 4,
   education_highlight: 'Master of Data Science — Deakin University',
