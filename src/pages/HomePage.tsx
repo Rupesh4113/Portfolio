@@ -1,0 +1,124 @@
+import React, { useEffect, useState } from 'react';
+import { Navbar } from '../components/common/Navbar';
+import { Footer } from '../components/common/Footer';
+import { Hero } from '../components/home/Hero';
+import { StatsSection } from '../components/home/StatsSection';
+import { AboutSection } from '../components/home/AboutSection';
+import { ExperienceTimeline } from '../components/home/ExperienceTimeline';
+import { FeaturedProjects } from '../components/home/FeaturedProjects';
+import { DashboardsSection } from '../components/home/DashboardsSection';
+import { SkillsSection } from '../components/home/SkillsSection';
+import { EducationSection } from '../components/home/EducationSection';
+import { ContactSection } from '../components/home/ContactSection';
+import { 
+  fetchProfile, 
+  fetchProjects, 
+  fetchExperiences, 
+  fetchSkills, 
+  fetchEducation, 
+  fetchCertifications, 
+  fetchDashboards 
+} from '../lib/api';
+import { 
+  Profile, 
+  Project, 
+  Experience, 
+  SkillCategory, 
+  Education, 
+  Certification, 
+  DashboardItem 
+} from '../types';
+import { initialProfile } from '../data/initialProfile';
+import { initialProjects } from '../data/initialProjects';
+import { initialExperiences } from '../data/initialExperiences';
+import { initialSkills } from '../data/initialSkills';
+import { initialEducation } from '../data/initialEducation';
+import { initialCertifications } from '../data/initialCertifications';
+import { initialDashboards } from '../data/initialDashboards';
+
+export const HomePage: React.FC = () => {
+  const [profile, setProfile] = useState<Profile>(initialProfile);
+  const [projects, setProjects] = useState<Project[]>(initialProjects);
+  const [experiences, setExperiences] = useState<Experience[]>(initialExperiences);
+  const [skills, setSkills] = useState<SkillCategory[]>(initialSkills);
+  const [education, setEducation] = useState<Education[]>(initialEducation);
+  const [certifications, setCertifications] = useState<Certification[]>(initialCertifications);
+  const [dashboards, setDashboards] = useState<DashboardItem[]>(initialDashboards);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const [prof, projs, exps, sks, edu, certs, dash] = await Promise.all([
+          fetchProfile(),
+          fetchProjects(false), // only published
+          fetchExperiences(),
+          fetchSkills(),
+          fetchEducation(),
+          fetchCertifications(),
+          fetchDashboards()
+        ]);
+
+        setProfile(prof);
+        setProjects(projs);
+        setExperiences(exps);
+        setSkills(sks);
+        setEducation(edu);
+        setCertifications(certs);
+        setDashboards(dash);
+      } catch (err) {
+        console.warn('Error loading initial data, using defaults:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadData();
+  }, []);
+
+  return (
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] transition-colors duration-200">
+      <Navbar resumeUrl={profile.resume_url} />
+
+      <main className="flex-1">
+        <Hero profile={profile} />
+        
+        <StatsSection
+          yearsTotal={profile.years_total}
+          yearsDS={profile.years_data_science}
+          educationHighlight={profile.education_highlight}
+          enterpriseHighlight={profile.enterprise_highlight}
+        />
+
+        <AboutSection profile={profile} />
+
+        <ExperienceTimeline experiences={experiences} />
+
+        <FeaturedProjects projects={projects} />
+
+        <DashboardsSection dashboards={dashboards} />
+
+        <SkillsSection skills={skills} />
+
+        <EducationSection 
+          education={education} 
+          certifications={certifications} 
+        />
+
+        <ContactSection
+          email={profile.email}
+          linkedinUrl={profile.linkedin_url}
+          githubUrl={profile.github_url}
+          location={profile.location}
+        />
+      </main>
+
+      <Footer
+        resumeUrl={profile.resume_url}
+        email={profile.email}
+        linkedinUrl={profile.linkedin_url}
+        githubUrl={profile.github_url}
+      />
+    </div>
+  );
+};
