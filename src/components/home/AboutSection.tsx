@@ -195,9 +195,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ profile }) => {
             );
           })}
         </div>
-      </div>
-
     </div>
-    </section >
+    </section>
   );
 };
