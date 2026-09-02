@@ -1,4 +1,4 @@
-# MASTER PROMPT — BUILD MY DATA SCIENCE PORTFOLIO WEBSITE
+BUILD MY DATA SCIENCE PORTFOLIO WEBSITE
 
 Create a modern, premium, fully responsive personal Data Science portfolio website for:
 
