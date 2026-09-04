@@ -6,6 +6,8 @@ import { StatsSection } from '../components/home/StatsSection';
 import { AboutSection } from '../components/home/AboutSection';
 import { ExperienceTimeline } from '../components/home/ExperienceTimeline';
 import { FeaturedProjects } from '../components/home/FeaturedProjects';
+import { ModelPerformanceDashboard } from '../components/home/ModelPerformanceDashboard';
+import { TechStackSection } from '../components/home/TechStackSection';
 import { DashboardsSection } from '../components/home/DashboardsSection';
 import { SkillsSection } from '../components/home/SkillsSection';
 import { EducationSection } from '../components/home/EducationSection';
@@ -94,7 +96,16 @@ export const HomePage: React.FC = () => {
 
         <ExperienceTimeline experiences={experiences} />
 
+        <ModelPerformanceDashboard 
+          onSelectProject={(slug) => {
+            const el = document.getElementById('projects');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+        />
+
         <FeaturedProjects projects={projects} />
+
+        <TechStackSection />
 
         <DashboardsSection dashboards={dashboards} />
 

@@ -428,6 +428,100 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({ projects, onRefr
                     <option value="custom">Standard ML Systems Layout</option>
                   </select>
                 </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-1">Quantitative Chart Visualizer</label>
+                  <select
+                    value={currentProject.quantitative_chart_type || ''}
+                    onChange={(e) => setCurrentProject({ ...currentProject, quantitative_chart_type: e.target.value })}
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
+                  >
+                    <option value="">None / Custom</option>
+                    <option value="sensor_imputation">Sensor Data Imputation & Normalization</option>
+                    <option value="clustering_pca">Silhouette Analysis & 3D PCA Scatter</option>
+                    <option value="real_estate_regression">Regression Residuals & CV Comparison</option>
+                    <option value="cirrhosis_survival">Cirrhosis Survival Cohort & Features</option>
+                    <option value="grid_stability">Grid Stability SVM/KNN/Tree Benchmark</option>
+                    <option value="bank_marketing">Bank Marketing ROC & Optimization Curve</option>
+                    <option value="mnist_optimization">MNIST Architecture Grid Search (20 Models)</option>
+                    <option value="power_reproduction">Power Consumption Research Replication</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Dataset Dimensions & Validation */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-1">Dataset Size</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. 10,000 rows × 12 features"
+                    value={currentProject.dataset_size || ''}
+                    onChange={(e) => setCurrentProject({ ...currentProject, dataset_size: e.target.value })}
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-1">Features Count</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. 12"
+                    value={currentProject.features_count || ''}
+                    onChange={(e) => setCurrentProject({ ...currentProject, features_count: e.target.value })}
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-1">Project Date / Year</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. 2024"
+                    value={currentProject.project_date || ''}
+                    onChange={(e) => setCurrentProject({ ...currentProject, project_date: e.target.value })}
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
+                  />
+                </div>
+              </div>
+
+              {/* Validation Strategy & Hyperparameter Optimization */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-1">Validation Strategy</label>
+                  <textarea
+                    rows={2}
+                    placeholder="e.g. Stratified 5-Fold Cross-Validation on training set..."
+                    value={currentProject.validation_strategy || ''}
+                    onChange={(e) => setCurrentProject({ ...currentProject, validation_strategy: e.target.value })}
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-1">Hyperparameter Optimization</label>
+                  <textarea
+                    rows={2}
+                    placeholder="e.g. Factorial Grid Search over C and gamma parameters..."
+                    value={currentProject.hyperparameter_optimization || ''}
+                    onChange={(e) => setCurrentProject({ ...currentProject, hyperparameter_optimization: e.target.value })}
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
+                  />
+                </div>
+              </div>
+
+              {/* Key Findings */}
+              <div>
+                <label className="block text-xs font-mono text-slate-500 mb-1">
+                  Key Findings (one per line)
+                </label>
+                <textarea
+                  rows={2}
+                  placeholder="Key finding 1&#10;Key finding 2"
+                  value={currentProject.key_findings?.join('\n') || ''}
+                  onChange={(e) => setCurrentProject({ ...currentProject, key_findings: e.target.value.split('\n').map(s => s.trim()).filter(Boolean) })}
+                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
+                />
               </div>
 
               {/* Tech Stack & Algorithms */}
@@ -457,16 +551,51 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({ projects, onRefr
                 </div>
               </div>
 
-              {/* GitHub Repo */}
-              <div>
-                <label className="block text-xs font-mono text-slate-500 mb-1">GitHub Repository URL</label>
-                <input
-                  type="url"
-                  placeholder="https://github.com/Rupesh4113/..."
-                  value={currentProject.github_url || ''}
-                  onChange={(e) => setCurrentProject({ ...currentProject, github_url: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
-                />
+              {/* Artifacts URLs Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-1">GitHub URL</label>
+                  <input
+                    type="url"
+                    placeholder="https://github.com/..."
+                    value={currentProject.github_url || ''}
+                    onChange={(e) => setCurrentProject({ ...currentProject, github_url: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-1">Notebook URL</label>
+                  <input
+                    type="url"
+                    placeholder="https://colab.research.google.com/..."
+                    value={currentProject.notebook_url || ''}
+                    onChange={(e) => setCurrentProject({ ...currentProject, notebook_url: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-1">Report URL</label>
+                  <input
+                    type="url"
+                    placeholder="https://.../report.pdf"
+                    value={currentProject.report_url || ''}
+                    onChange={(e) => setCurrentProject({ ...currentProject, report_url: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-1">Demo / App URL</label>
+                  <input
+                    type="url"
+                    placeholder="https://..."
+                    value={currentProject.demo_url || ''}
+                    onChange={(e) => setCurrentProject({ ...currentProject, demo_url: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
+                  />
+                </div>
               </div>
 
               {/* Image Upload Area */}

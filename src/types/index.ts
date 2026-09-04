@@ -43,6 +43,17 @@ export interface Project {
   future_improvements: string[];
   github_url?: string;
   demo_url?: string;
+  notebook_url?: string;
+  report_url?: string;
+  analysis_url?: string;
+  dataset_size?: string;
+  features_count?: number | string;
+  validation_strategy?: string;
+  hyperparameter_optimization?: string;
+  key_findings?: string[];
+  project_date?: string;
+  quantitative_chart_type?: string;
+  model_comparison_data?: Array<{ model: string; [key: string]: any }>;
   thumbnail_url: string;
   gallery_images: string[];
   created_at?: string;

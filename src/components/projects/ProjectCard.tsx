@@ -7,7 +7,8 @@ import {
   FolderGit2, 
   ExternalLink,
   Cpu,
-  BarChart2
+  BarChart2,
+  Binary
 } from 'lucide-react';
 import { Project } from '../../types';
 import { Badge } from '../common/Badge';
@@ -19,6 +20,7 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) => {
   const isProfessional = project.project_type === 'professional';
+  const isQuantitative = project.id.startsWith('quant-');
 
   return (
     <div className="group rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900/90 shadow-sm hover:shadow-xl hover:border-cyan-500/40 dark:hover:border-cyan-500/40 transition-all duration-300 flex flex-col justify-between overflow-hidden">
@@ -27,15 +29,20 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) =
       <div className="p-6 pb-4">
         <div className="flex items-center justify-between gap-2 mb-3">
           {/* Project Type Badge */}
-          {isProfessional ? (
+          {isQuantitative ? (
             <Badge variant="cyan" size="sm">
+              <Binary className="w-3 h-3" />
+              <span>Quantitative ML</span>
+            </Badge>
+          ) : isProfessional ? (
+            <Badge variant="emerald" size="sm">
               <CheckCircle className="w-3 h-3" />
-              <span>Resume / Enterprise Project</span>
+              <span>Resume / Client Project</span>
             </Badge>
           ) : (
             <Badge variant="indigo" size="sm">
               <Cpu className="w-3 h-3" />
-              <span>Demonstration Case Study</span>
+              <span>Demonstration Study</span>
             </Badge>
           )}
 

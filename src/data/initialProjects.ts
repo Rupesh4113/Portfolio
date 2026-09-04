@@ -1,6 +1,7 @@
 import { Project } from '../types';
+import { quantitativeProjects } from './quantitativeProjects';
 
-export const initialProjects: Project[] = [
+const existingEnterpriseProjects: Project[] = [
   // ==========================================
   // REAL RESUME / PROFESSIONAL PROJECTS (1 - 5)
   // ==========================================
@@ -870,3 +871,12 @@ export const initialProjects: Project[] = [
     gallery_images: []
   }
 ];
+
+export const initialProjects: Project[] = [
+  ...quantitativeProjects,
+  ...existingEnterpriseProjects.map((p, idx) => ({ 
+    ...p, 
+    display_order: quantitativeProjects.length + idx + 1 
+  }))
+];
+
