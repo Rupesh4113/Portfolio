@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   FileDown, 
   Menu, 
@@ -22,6 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
 
   useEffect(() => {
@@ -109,24 +110,23 @@ export const Navbar: React.FC<NavbarProps> = ({
               // Anchor links (e.g. #about, #projects, #experience, #education, #certifications, #contact)
               const sectionId = link.href.replace('/#', '');
               const handleClick = (e: React.MouseEvent) => {
+                e.preventDefault();
                 if (isHomePage) {
-                  e.preventDefault();
                   const targetEl = document.getElementById(sectionId);
                   if (targetEl) {
                     targetEl.scrollIntoView({ behavior: 'smooth' });
-                    window.history.pushState(null, '', `#${sectionId}`);
                   }
+                } else {
+                  navigate(`/#${sectionId}`);
                 }
               };
-
-              const targetHref = isHomePage ? `#${sectionId}` : `${import.meta.env.BASE_URL}#${sectionId}`;
 
               return (
                 <a
                   key={link.name}
-                  href={targetHref}
+                  href={`#${sectionId}`}
                   onClick={handleClick}
-                  className="px-2.5 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 rounded-lg transition-colors font-mono"
+                  className="px-2.5 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 rounded-lg transition-colors font-mono cursor-pointer"
                 >
                   {link.name}
                 </a>
@@ -196,24 +196,24 @@ export const Navbar: React.FC<NavbarProps> = ({
               // Anchor links
               const sectionId = link.href.replace('/#', '');
               const handleClick = (e: React.MouseEvent) => {
+                e.preventDefault();
                 setMobileMenuOpen(false);
                 if (isHomePage) {
-                  e.preventDefault();
                   const targetEl = document.getElementById(sectionId);
                   if (targetEl) {
                     targetEl.scrollIntoView({ behavior: 'smooth' });
-                    window.history.pushState(null, '', `#${sectionId}`);
                   }
+                } else {
+                  navigate(`/#${sectionId}`);
                 }
               };
 
-              const targetHref = isHomePage ? `#${sectionId}` : `${import.meta.env.BASE_URL}#${sectionId}`;
               return (
                 <a
                   key={link.name}
-                  href={targetHref}
+                  href={`#${sectionId}`}
                   onClick={handleClick}
-                  className="px-3 py-2 text-xs font-mono font-medium text-slate-700 dark:text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-400 rounded-lg flex items-center justify-between"
+                  className="px-3 py-2 text-xs font-mono font-medium text-slate-700 dark:text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-400 rounded-lg flex items-center justify-between cursor-pointer"
                 >
                   <span>{link.name}</span>
                   <ChevronRight className="w-3 h-3 text-slate-500" />

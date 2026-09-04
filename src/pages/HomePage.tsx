@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Navbar } from '../components/common/Navbar';
 import { Footer } from '../components/common/Footer';
 import { Hero } from '../components/home/Hero';
@@ -78,10 +79,13 @@ export const HomePage: React.FC = () => {
     loadData();
   }, []);
 
+  const location = useLocation();
+
   // Handle direct hash navigation e.g. /#projects, /#about, /#experience, /#education, /#certifications, /#contact
   useEffect(() => {
-    if (!isLoading && window.location.hash) {
-      const id = window.location.hash.replace('#', '');
+    const rawHash = location.hash || window.location.hash;
+    if (!isLoading && rawHash) {
+      const id = rawHash.replace('#', '');
       setTimeout(() => {
         const el = document.getElementById(id);
         if (el) {
@@ -89,7 +93,7 @@ export const HomePage: React.FC = () => {
         }
       }, 100);
     }
-  }, [isLoading]);
+  }, [isLoading, location.hash]);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] transition-colors duration-200">
