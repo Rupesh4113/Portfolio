@@ -20,7 +20,7 @@ import { fetchProfile } from '../lib/api';
 import { Profile } from '../types';
 import { initialProfile } from '../data/initialProfile';
 import { getAssetUrl, fireConfetti } from '../lib/utils';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface SkillCategoryDef {
   title: string;
@@ -32,6 +32,7 @@ interface SkillCategoryDef {
 
 export const SkillsPage: React.FC = () => {
   const [profile, setProfile] = useState<Profile>(initialProfile);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchProfile().then(setProfile).catch(() => {});
@@ -198,13 +199,13 @@ export const SkillsPage: React.FC = () => {
               </p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-3">
-              <Link
-                to="/#projects"
-                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs sm:text-sm font-mono font-semibold shadow transition"
+              <button
+                onClick={() => navigate('/#projects')}
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs sm:text-sm font-mono font-semibold shadow transition cursor-pointer"
               >
                 <span>View Projects</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </button>
               <a
                 href={getAssetUrl(profile.resume_url)}
                 download="Rupesh_Kumar_Pandey_Data_Scientist_Resume.pdf"

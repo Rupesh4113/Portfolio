@@ -82,7 +82,16 @@ export const Hero: React.FC<HeroProps> = ({ profile }) => {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
               <a
                 href="#projects"
-                className="inline-flex items-center space-x-2 px-5 py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold font-mono shadow-lg shadow-cyan-600/20 transition-all hover:translate-y-[-1px] active:translate-y-[0]"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.getElementById('projects');
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    window.location.hash = '#projects';
+                  }
+                }}
+                className="inline-flex items-center space-x-2 px-5 py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold font-mono shadow-lg shadow-cyan-600/20 transition-all hover:translate-y-[-1px] active:translate-y-[0] cursor-pointer"
               >
                 <span>View Projects</span>
                 <ArrowRight className="w-4 h-4" />
@@ -100,7 +109,16 @@ export const Hero: React.FC<HeroProps> = ({ profile }) => {
 
               <a
                 href="#contact"
-                className="inline-flex items-center space-x-2 px-4 py-3 rounded-xl border border-slate-300/80 dark:border-slate-800 bg-transparent hover:bg-slate-200/50 dark:hover:bg-slate-800/50 text-slate-700 dark:text-slate-300 text-sm font-medium font-mono transition-colors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.getElementById('contact');
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    window.location.hash = '#contact';
+                  }
+                }}
+                className="inline-flex items-center space-x-2 px-4 py-3 rounded-xl border border-slate-300/80 dark:border-slate-800 bg-transparent hover:bg-slate-200/50 dark:hover:bg-slate-800/50 text-slate-700 dark:text-slate-300 text-sm font-medium font-mono transition-colors cursor-pointer"
               >
                 <Mail className="w-4 h-4 text-slate-500" />
                 <span>Contact Me</span>
