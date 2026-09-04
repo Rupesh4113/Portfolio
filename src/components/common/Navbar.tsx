@@ -8,7 +8,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
-import { fireConfetti } from '../../lib/utils';
+import { fireConfetti, getAssetUrl } from '../../lib/utils';
 import { useAuth } from '../../context/AuthContext';
 import rupeshPhoto from '../../assets/images/Rupesh.jpeg';
 
@@ -124,7 +124,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Resume Download CTA */}
             <a
-              href={resumeUrl}
+              href={getAssetUrl(resumeUrl)}
               download="Rupesh_Kumar_Pandey_Data_Scientist_Resume.pdf"
               onClick={handleResumeClick}
               className="inline-flex items-center space-x-2 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-mono shadow-sm transition-all hover:shadow-cyan-500/20 active:scale-95"
@@ -194,7 +194,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3">
             <a
-              href={resumeUrl}
+              href={getAssetUrl(resumeUrl)}
               download="Rupesh_Kumar_Pandey_Data_Scientist_Resume.pdf"
               onClick={() => {
                 handleResumeClick();

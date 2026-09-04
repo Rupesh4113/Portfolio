@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { LinkedinIcon, GithubIcon } from '../common/SocialIcons';
 import { Profile } from '../../types';
-import { fireConfetti } from '../../lib/utils';
+import { fireConfetti, getAssetUrl } from '../../lib/utils';
 import { Badge } from '../common/Badge';
 import rupeshPhoto from '../../assets/images/Rupesh.jpeg';
 
@@ -89,7 +89,7 @@ export const Hero: React.FC<HeroProps> = ({ profile }) => {
               </a>
 
               <a
-                href={profile.resume_url}
+                href={getAssetUrl(profile.resume_url)}
                 download="Rupesh_Kumar_Pandey_Data_Scientist_Resume.pdf"
                 onClick={handleResumeDownload}
                 className="inline-flex items-center space-x-2 px-5 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700/80 text-slate-800 dark:text-slate-200 text-sm font-semibold font-mono shadow-sm transition-all"

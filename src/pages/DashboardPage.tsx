@@ -38,7 +38,7 @@ import { initialEducation } from '../data/initialEducation';
 import { initialCertifications } from '../data/initialCertifications';
 import { businessCaseStudies } from '../data/businessCaseStudies';
 import rupeshPhoto from '../assets/images/Rupesh.jpeg';
-import { fireConfetti } from '../lib/utils';
+import { fireConfetti, getAssetUrl } from '../lib/utils';
 import { Link } from 'react-router-dom';
 
 export const DashboardPage: React.FC = () => {
@@ -133,7 +133,7 @@ export const DashboardPage: React.FC = () => {
 
               {/* Download Resume Button */}
               <a
-                href={profile.resume_url}
+                href={getAssetUrl(profile.resume_url)}
                 download="Rupesh_Kumar_Pandey_Data_Scientist_Resume.pdf"
                 onClick={fireConfetti}
                 className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs sm:text-sm font-mono font-semibold shadow-md shadow-cyan-600/20 transition active:scale-95"

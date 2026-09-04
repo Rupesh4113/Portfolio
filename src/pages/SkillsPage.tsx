@@ -19,6 +19,7 @@ import {
 import { fetchProfile } from '../lib/api';
 import { Profile } from '../types';
 import { initialProfile } from '../data/initialProfile';
+import { getAssetUrl, fireConfetti } from '../lib/utils';
 import { Link } from 'react-router-dom';
 
 interface SkillCategoryDef {
@@ -205,8 +206,9 @@ export const SkillsPage: React.FC = () => {
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
-                href={profile.resume_url}
+                href={getAssetUrl(profile.resume_url)}
                 download="Rupesh_Kumar_Pandey_Data_Scientist_Resume.pdf"
+                onClick={fireConfetti}
                 className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs sm:text-sm font-mono font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition"
               >
                 <FileDown className="w-4 h-4 text-cyan-500" />

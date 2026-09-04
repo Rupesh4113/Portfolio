@@ -7,7 +7,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { LinkedinIcon, GithubIcon } from './SocialIcons';
-import { fireConfetti } from '../../lib/utils';
+import { fireConfetti, getAssetUrl } from '../../lib/utils';
 
 interface FooterProps {
   resumeUrl?: string;
@@ -78,7 +78,7 @@ export const Footer: React.FC<FooterProps> = ({
             </a>
 
             <a
-              href={resumeUrl}
+              href={getAssetUrl(resumeUrl)}
               download="Rupesh_Kumar_Pandey_Data_Scientist_Resume.pdf"
               onClick={fireConfetti}
               className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-xs font-mono font-medium text-white shadow-sm transition-all"
