@@ -102,7 +102,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ profile }) => {
               <div>
                 <span className="text-xs font-mono text-slate-500">Analytics & BI Tools</span>
                 <p className="text-sm font-semibold text-slate-800 dark:text-slate-200 mt-1">
-                  Power BI (DAX, Modeling), Tableau, Matplotlib, Seaborn
+                  Power BI, Tableau, Matplotlib, Seaborn
                 </p>
               </div>
 
