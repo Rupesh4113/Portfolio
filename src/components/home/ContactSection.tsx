@@ -7,7 +7,9 @@ import {
   CheckCircle2,
   AlertCircle,
   Clock,
-  Sparkles
+  Sparkles,
+  MessageSquare,
+  PhoneCall
 } from 'lucide-react';
 import { LinkedinIcon, GithubIcon } from '../common/SocialIcons';
 import { submitContactMessage } from '../../lib/api';
@@ -22,7 +24,7 @@ interface ContactSectionProps {
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
-  email = 'amerupesh08@gail.com',
+  email = 'amerupesh08@gmail.com',
   phone = '+91 8867382604',
   linkedinUrl = 'https://www.linkedin.com/in/rupesh-kumar-pandey-9016543b/',
   githubUrl = 'https://github.com/Rupesh4113',
@@ -33,6 +35,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const [senderPhone, setSenderPhone] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+
+  // Retain last submitted message for immediate WhatsApp mobile dispatch
+  const [lastSubmitted, setLastSubmitted] = useState<{
+    name: string;
+    email: string;
+    phone: string;
+    subject: string;
+    message: string;
+  } | null>(null);
 
   // Honeypot field for anti-spam bots
   const [companyHoneypot, setCompanyHoneypot] = useState('');
@@ -65,17 +76,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       return;
     }
 
+    const payload = {
+      name: name.trim(),
+      email: senderEmail.trim(),
+      phone: senderPhone.trim(),
+      subject: subject.trim() || 'Data Scientist Inquiry / Opportunity',
+      message: message.trim()
+    };
+
     setIsSubmitting(true);
     try {
-      const ok = await submitContactMessage({
-        name: name.trim(),
-        email: senderEmail.trim(),
-        phone: senderPhone.trim(),
-        subject: subject.trim() || 'Data Scientist Inquiry / Opportunity',
-        message: message.trim()
-      });
+      const ok = await submitContactMessage(payload);
 
       if (ok) {
+        setLastSubmitted(payload);
         setStatusMessage({
           type: 'success',
           text: 'Thank you for your message. Your inquiry has been submitted successfully.'
@@ -89,13 +103,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       } else {
         setStatusMessage({
           type: 'error',
-          text: 'Unable to deliver message at this moment. Please email me directly.'
+          text: 'Unable to deliver message at this moment. Please email me directly at amerupesh08@gmail.com.'
         });
       }
     } catch (err) {
       setStatusMessage({
         type: 'error',
-        text: 'A connection error occurred. Please try again or reach out via LinkedIn.'
+        text: 'A connection error occurred. Please reach out directly to amerupesh08@gmail.com or call/WhatsApp +91 8867382604.'
       });
     } finally {
       setIsSubmitting(false);
@@ -189,6 +203,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <div>
                     <span className="text-[10px] font-mono text-slate-400 uppercase block">Phone / Mobile</span>
                     <span className="font-semibold text-slate-800 dark:text-slate-200">{phone}</span>
+                  </div>
+                </a>
+
+                <a
+                  href="https://wa.me/918867382604?text=Hi%20Rupesh,%20I%20am%20reaching%20out%20from%20your%20portfolio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 p-3.5 rounded-xl border border-emerald-500/30 bg-emerald-50/50 dark:bg-emerald-950/20 hover:border-emerald-500/60 hover:bg-emerald-100/40 dark:hover:bg-emerald-900/30 transition group"
+                >
+                  <div className="p-2 rounded-lg bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 group-hover:scale-105 transition-transform">
+                    <MessageSquare className="w-4 h-4" />
+                  </div>
+                  <div className="flex-1">
+                    <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 uppercase block font-medium">Instant Mobile Chat (WhatsApp)</span>
+                    <span className="font-semibold text-slate-800 dark:text-slate-200">+91 8867382604</span>
                   </div>
                 </a>
 
@@ -298,17 +327,36 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                 {statusMessage && (
                   <div
-                    className={`p-3.5 rounded-xl text-xs font-mono flex items-center space-x-2 ${statusMessage.type === 'success'
+                    className={`p-3.5 rounded-xl text-xs font-mono space-y-2.5 ${statusMessage.type === 'success'
                         ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
                         : 'bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20'
                       }`}
                   >
-                    {statusMessage.type === 'success' ? (
-                      <CheckCircle2 className="w-4 h-4 shrink-0" />
-                    ) : (
-                      <AlertCircle className="w-4 h-4 shrink-0" />
+                    <div className="flex items-center space-x-2">
+                      {statusMessage.type === 'success' ? (
+                        <CheckCircle2 className="w-4 h-4 shrink-0" />
+                      ) : (
+                        <AlertCircle className="w-4 h-4 shrink-0" />
+                      )}
+                      <span>{statusMessage.text}</span>
+                    </div>
+
+                    {statusMessage.type === 'success' && lastSubmitted && (
+                      <div className="pt-2 border-t border-emerald-500/20 flex flex-wrap items-center gap-2">
+                        <span className="text-[11px] text-slate-600 dark:text-slate-300">Also notify Rupesh directly on mobile:</span>
+                        <a
+                          href={`https://wa.me/918867382604?text=${encodeURIComponent(
+                            `Hi Rupesh, I just submitted an inquiry on your portfolio website:\n\n*Name:* ${lastSubmitted.name}\n*Email:* ${lastSubmitted.email}\n*Phone:* ${lastSubmitted.phone || 'N/A'}\n*Subject:* ${lastSubmitted.subject}\n*Message:* ${lastSubmitted.message}`
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-[11px] font-semibold shadow-sm transition"
+                        >
+                          <MessageSquare className="w-3.5 h-3.5" />
+                          <span>Send to Mobile via WhatsApp (+91 8867382604)</span>
+                        </a>
+                      </div>
                     )}
-                    <span>{statusMessage.text}</span>
                   </div>
                 )}
 

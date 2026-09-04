@@ -11,7 +11,7 @@ import {
 import { useAuth } from '../../context/AuthContext';
 
 export const AdminForgotPassword: React.FC = () => {
-  const [email, setEmail] = useState('amerupesh08@gail.com');
+  const [email, setEmail] = useState('amerupesh08@gmail.com');
   const [statusMessage, setStatusMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { requestPasswordReset } = useAuth();

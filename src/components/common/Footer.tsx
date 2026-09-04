@@ -18,7 +18,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({
   resumeUrl = 'resume/Rupesh_Kumar_Pandey_Data_Scientist_Resume.pdf',
-  email = 'amerupesh08@gail.com',
+  email = 'amerupesh08@gmail.com',
   linkedinUrl = 'https://www.linkedin.com/in/rupesh-kumar-pandey-9016543b/',
   githubUrl = 'https://github.com/Rupesh4113'
 }) => {

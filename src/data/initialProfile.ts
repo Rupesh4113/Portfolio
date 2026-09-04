@@ -14,7 +14,7 @@ export const initialProfile: Profile = {
     'Strong understanding of customer and operational analytics, with transferable capabilities for Retail, Transportation, and Telecom use cases including customer segmentation, churn/propensity modeling, demand forecasting, inventory optimization, revenue analytics, cross-selling, campaign optimization, and operational performance analytics.'
   ],
   location: 'Whitefield, Bengaluru, India',
-  email: 'amerupesh08@gail.com',
+  email: 'amerupesh08@gmail.com',
   phone: '+91 8867382604',
   linkedin_url: 'https://www.linkedin.com/in/rupesh-kumar-pandey-9016543b/',
   github_url: 'https://github.com/Rupesh4113',
