@@ -17,8 +17,8 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({
-  resumeUrl = 'public\resume\Rupesh Kumar Pandey_Data Scientist.pdf',
-  email = 'amerupesh08@gmail.com',
+  resumeUrl = 'resume/Rupesh_Kumar_Pandey_Data_Scientist_Resume.pdf',
+  email = 'amerupesh08@gail.com',
   linkedinUrl = 'https://www.linkedin.com/in/rupesh-kumar-pandey-9016543b/',
   githubUrl = 'https://github.com/Rupesh4113'
 }) => {
@@ -71,20 +71,20 @@ export const Footer: React.FC<FooterProps> = ({
             <a
               href={`mailto:${email}`}
               className="p-2 rounded-lg bg-slate-200/70 dark:bg-slate-800/60 hover:text-cyan-500 text-slate-700 dark:text-slate-300 transition-colors"
-              title="Email Rupesh Pandey"
-              aria-label="Email Rupesh Pandey"
+              title="Email Rupesh Kumar Pandey"
+              aria-label="Email Rupesh Kumar Pandey"
             >
               <Mail className="w-4 h-4" />
             </a>
 
             <a
               href={resumeUrl}
-              download="public\resume\Rupesh Kumar Pandey_Data Scientist.pdf"
+              download="Rupesh_Kumar_Pandey_Data_Scientist_Resume.pdf"
               onClick={fireConfetti}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800/60 text-xs font-mono text-slate-700 dark:text-slate-300 hover:text-cyan-400 transition-colors"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-xs font-mono font-medium text-white shadow-sm transition-all"
             >
               <FileDown className="w-3.5 h-3.5" />
-              <span>Resume PDF</span>
+              <span>Download ATS Resume</span>
             </a>
 
             {/* Back to Top */}

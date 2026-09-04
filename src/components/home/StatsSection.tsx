@@ -15,7 +15,7 @@ interface StatsSectionProps {
 }
 
 export const StatsSection: React.FC<StatsSectionProps> = ({
-  yearsTotal = 11,
+  yearsTotal = 12,
   yearsDS = 4,
   educationHighlight = 'Data Science — Deakin University',
   enterpriseHighlight = 'Blue Yonder / Transportation & Logistics'

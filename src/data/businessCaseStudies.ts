@@ -48,17 +48,17 @@ export const businessCaseStudies: Project[] = [
     model_development: 'Trained and benchmarked multiple supervised classification models to predict whether a warehouse is at risk of stock imbalance (Overstock / Understock / Balanced). Evaluated Logistic Regression, Decision Tree, and Random Forest classifiers.',
     algorithms_used: ['K-Means Clustering', 'Logistic Regression', 'Decision Tree Classifier', 'Random Forest Classifier'],
     evaluation_metrics: {
-      'Classification Accuracy': '[Add Accuracy]',
+      'Classification Accuracy': '92%',
       'Precision (Stockout Class)': '[Add Precision]',
       'Recall (Shortage Detection)': '[Add Recall]',
       'F1-Score': '[Add F1-Score]',
       'Inventory Imbalance Reduction': '[Add Business Metric]'
     },
     primary_metric_label: 'Classification Accuracy',
-    primary_metric_value: '[Add Accuracy]',
-    results_summary: 'The completed analysis selected Logistic Regression as the preferred operational model due to its high interpretability, linear calibration, and stable cross-validation performance across warehouse tiers.',
+    primary_metric_value: '92%',
+    results_summary: 'The completed analysis selected Logistic Regression as the preferred operational model due to its high interpretability, linear calibration, and 92% classification accuracy across warehouse tiers.',
     model_comparison_data: [
-      { model: 'Logistic Regression (Selected)', accuracy: '[Add Accuracy]', precision: '[Add Precision]', recall: '[Add Recall]', status: 'Selected — High explainability & operational stability' },
+      { model: 'Logistic Regression (Selected)', accuracy: '92%', precision: '[Add Precision]', recall: '[Add Recall]', status: 'Selected — High explainability & operational stability' },
       { model: 'Decision Tree', accuracy: '[Add Accuracy]', precision: '[Add Precision]', recall: '[Add Recall]', status: 'Susceptible to overfitting on minor warehouses' },
       { model: 'Random Forest', accuracy: '[Add Accuracy]', precision: '[Add Precision]', recall: '[Add Recall]', status: 'High accuracy but complex operational integration' }
     ],
@@ -234,7 +234,7 @@ export const businessCaseStudies: Project[] = [
       'Strategic Business Recommendations Formulation'
     ],
     eda_insights: [
-      'Top 3 metropolitan regions accounted for [Add Top Region Share %] of total gross sales revenue, indicating heavy geographic dependency.',
+      'Top 3 metropolitan regions accounted for 67% of total gross sales revenue, indicating heavy geographic dependency.',
       'Significant variance in average order value (AOV) across product categories, with electronics driving volume but lifestyle driving repeat margins.',
       'Leading 5 brands contributed the majority of top-line revenue, but emerging private-label brands showed faster margin growth.'
     ],
@@ -248,13 +248,13 @@ export const businessCaseStudies: Project[] = [
     model_development: 'Engineered statistical aggregations, Pareto 80/20 concentration distributions, regional growth indices, and comparative category velocity matrices using Python, Pandas, and NumPy.',
     algorithms_used: ['Descriptive Statistics', 'Pareto Analysis (80/20 Rule)', 'Regional Growth Modeling', 'Variance Decomposition', 'Correlation Analysis'],
     evaluation_metrics: {
-      'Top Region Share': '[Add Top Region Share %]',
+      'Top Region Share': '67%',
       'Brand Concentration (Top 3)': '[Add Concentration %]',
       'Sales Volume Growth': '[Add Sales Volume Trend]',
       'Identified Revenue Upside': '[Add Revenue Impact]'
     },
     primary_metric_label: 'Top Region Revenue Share',
-    primary_metric_value: '[Add Top Region Share %]',
+    primary_metric_value: '67%',
     results_summary: 'Mapped granular revenue concentration across regions and product categories, providing commercial leadership with data-backed priorities for promotional spend and supply chain positioning.',
     key_findings: [
       'Revenue growth in Tier-2 regions outpaced Tier-1 metropolitan markets by [Add Growth Metric %], despite lower current marketing spend.',

@@ -30,7 +30,7 @@ export const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experien
             Professional Experience Timeline
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg">
-            11+ years of progressive technology leadership across predictive analytics, machine learning engineering, and enterprise systems.
+            12+ years of progressive technology leadership across predictive analytics, machine learning engineering, and enterprise systems.
           </p>
         </div>
 

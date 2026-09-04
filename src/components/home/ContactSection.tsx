@@ -22,14 +22,15 @@ interface ContactSectionProps {
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
-  email = 'amerupesh08@gmail.com',
-  phone = '+91 88673 82604',
+  email = 'amerupesh08@gail.com',
+  phone = '+91 8867382604',
   linkedinUrl = 'https://www.linkedin.com/in/rupesh-kumar-pandey-9016543b/',
   githubUrl = 'https://github.com/Rupesh4113',
   location = 'Whitefield, Bengaluru, India'
 }) => {
   const [name, setName] = useState('');
   const [senderEmail, setSenderEmail] = useState('');
+  const [senderPhone, setSenderPhone] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
 
@@ -46,7 +47,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     // Spam bot check
     if (companyHoneypot) {
       // Silently ignore bot submission
-      setStatusMessage({ type: 'success', text: 'Thank you for reaching out! I will respond promptly.' });
+      setStatusMessage({ 
+        type: 'success', 
+        text: 'Thank you for your message. Your inquiry has been submitted successfully.' 
+      });
       return;
     }
 
@@ -66,18 +70,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       const ok = await submitContactMessage({
         name: name.trim(),
         email: senderEmail.trim(),
-        subject: subject.trim() || 'General Inquiry / Opportunity',
+        phone: senderPhone.trim(),
+        subject: subject.trim() || 'Data Scientist Inquiry / Opportunity',
         message: message.trim()
       });
 
       if (ok) {
         setStatusMessage({
           type: 'success',
-          text: 'Message sent successfully! Thank you for getting in touch.'
+          text: 'Thank you for your message. Your inquiry has been submitted successfully.'
         });
         fireConfetti();
         setName('');
         setSenderEmail('');
+        setSenderPhone('');
         setSubject('');
         setMessage('');
       } else {
@@ -248,17 +254,32 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-mono font-medium text-slate-600 dark:text-slate-400 mb-1.5">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Senior Data Scientist Opportunity / Consulting"
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 font-mono transition"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-mono font-medium text-slate-600 dark:text-slate-400 mb-1.5">
+                      Phone <span className="text-slate-400 font-normal">(optional)</span>
+                    </label>
+                    <input
+                      type="tel"
+                      placeholder="e.g. +91 9876543210"
+                      value={senderPhone}
+                      onChange={(e) => setSenderPhone(e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 font-mono transition"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono font-medium text-slate-600 dark:text-slate-400 mb-1.5">
+                      Subject
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Senior Data Scientist Opportunity / Consulting"
+                      value={subject}
+                      onChange={(e) => setSubject(e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 font-mono transition"
+                    />
+                  </div>
                 </div>
 
                 <div>

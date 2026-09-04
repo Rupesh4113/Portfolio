@@ -13,7 +13,7 @@ export const QuantitativeMetricsSection: React.FC = () => {
   const metrics = [
     {
       icon: FolderGit2,
-      value: 10,
+      value: 12,
       suffix: '+',
       title: 'Analytics Projects',
       subtitle: 'End-to-end academic & professional projects',
