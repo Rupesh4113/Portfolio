@@ -7,6 +7,17 @@ export type DiagramType =
   | 'supply_chain' 
   | 'transportation_lane' 
   | 'nlp_pipeline' 
+  | 'ecommerce_funnel'
+  | 'insurance_analytics'
+  | 'telecom_churn'
+  | 'predictive_maintenance'
+  | 'recommendation_engine'
+  | 'uplift_causal_ml'
+  | 'customer_segmentation'
+  | 'marketing_campaign'
+  | 'iot_sensor_pipeline'
+  | 'clinical_risk_pipeline'
+  | 'deep_learning_pipeline'
   | 'custom';
 
 export interface Project {

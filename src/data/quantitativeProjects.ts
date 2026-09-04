@@ -80,6 +80,7 @@ export const quantitativeProjects: Project[] = [
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'
     ],
     quantitative_chart_type: 'sensor_imputation',
+    architecture_diagram_type: 'iot_sensor_pipeline',
     project_date: '2024'
   },
 
@@ -161,6 +162,7 @@ export const quantitativeProjects: Project[] = [
       'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80'
     ],
     quantitative_chart_type: 'clustering_pca',
+    architecture_diagram_type: 'customer_segmentation',
     project_date: '2024'
   },
 
@@ -243,6 +245,7 @@ export const quantitativeProjects: Project[] = [
       'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80'
     ],
     quantitative_chart_type: 'real_estate_regression',
+    architecture_diagram_type: 'pricing_elasticity',
     project_date: '2024'
   },
 
@@ -325,6 +328,7 @@ export const quantitativeProjects: Project[] = [
       'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=800&q=80'
     ],
     quantitative_chart_type: 'cirrhosis_survival',
+    architecture_diagram_type: 'clinical_risk_pipeline',
     project_date: '2024'
   },
 
@@ -408,6 +412,7 @@ export const quantitativeProjects: Project[] = [
       'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&w=800&q=80'
     ],
     quantitative_chart_type: 'grid_stability',
+    architecture_diagram_type: 'sagemaker_mlops',
     project_date: '2024'
   },
 
@@ -490,6 +495,7 @@ export const quantitativeProjects: Project[] = [
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'
     ],
     quantitative_chart_type: 'bank_marketing',
+    architecture_diagram_type: 'marketing_campaign',
     project_date: '2024'
   },
 
@@ -573,6 +579,7 @@ export const quantitativeProjects: Project[] = [
       'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'
     ],
     quantitative_chart_type: 'mnist_optimization',
+    architecture_diagram_type: 'deep_learning_pipeline',
     project_date: '2024'
   },
 
@@ -653,6 +660,7 @@ export const quantitativeProjects: Project[] = [
       'https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=800&q=80'
     ],
     quantitative_chart_type: 'power_reproduction',
+    architecture_diagram_type: 'demand_forecasting',
     project_date: '2024'
   }
 ];

@@ -731,5 +731,591 @@ export const QuantitativeVisuals: React.FC<QuantitativeVisualsProps> = ({
     );
   }
 
+
+  // -------------------------------------------------------------
+  // 9. SUPPLY CHAIN IMBALANCE (CASE STUDY 1)
+  // -------------------------------------------------------------
+  if (chartType === 'supply_chain_imbalance') {
+    const warehouseData = [
+      { name: 'Depot North-A (Delhi/NCR)', demandRatio: 1.42, stockoutRisk: 'High Risk (Shortage)', fillRate: '78.4%', invTurn: '14.2x' },
+      { name: 'Hub West-Central (Mumbai)', demandRatio: 1.18, stockoutRisk: 'Moderate Risk', fillRate: '89.2%', invTurn: '11.8x' },
+      { name: 'Depot South-1 (Bengaluru)', demandRatio: 0.98, stockoutRisk: 'Balanced Flow (Optimal)', fillRate: '96.8%', invTurn: '9.4x' },
+      { name: 'Depot South-2 (Chennai)', demandRatio: 0.94, stockoutRisk: 'Balanced Flow (Optimal)', fillRate: '95.4%', invTurn: '8.9x' },
+      { name: 'Facility East (Kolkata)', demandRatio: 0.68, stockoutRisk: 'Chronic Overstock', fillRate: '99.1%', invTurn: '4.2x' },
+      { name: 'Hub Central (Nagpur)', demandRatio: 0.72, stockoutRisk: 'Moderate Overstock', fillRate: '98.5%', invTurn: '5.1x' }
+    ];
+
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-between flex-wrap gap-3 pb-3 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <Activity className="w-4 h-4 text-cyan-500" />
+              Warehouse Demand-to-Supply Ratio & Stockout Imbalance Matrix
+            </h4>
+            <p className="text-xs text-slate-500 font-mono mt-0.5">50+ Regional Distribution Centers (WMS Real-Time Telemetry)</p>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-mono">
+            <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-bold">
+              Classification Accuracy: 92%
+            </span>
+          </div>
+        </div>
+
+        <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 space-y-4">
+          <div className="text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 flex justify-between">
+            <span>Demand-to-Supply Ratio (DSR) by Regional Depot</span>
+            <span className="text-cyan-500">Benchmark Ratio = 1.0 (Balanced)</span>
+          </div>
+
+          <div className="space-y-3">
+            {warehouseData.map((wh, idx) => {
+              const isOver = wh.demandRatio > 1.1;
+              const isUnder = wh.demandRatio < 0.85;
+              const barWidth = Math.min(100, (wh.demandRatio / 1.6) * 100);
+              return (
+                <div key={idx} className="space-y-1">
+                  <div className="flex justify-between items-center text-xs font-mono">
+                    <span className="font-semibold text-slate-800 dark:text-slate-200">{wh.name}</span>
+                    <span className={`px-2 py-0.5 rounded text-[10px] ${
+                      isOver ? 'bg-rose-500/10 text-rose-500 font-bold' : isUnder ? 'bg-amber-500/10 text-amber-500' : 'bg-emerald-500/10 text-emerald-500'
+                    }`}>
+                      DSR: {wh.demandRatio} &bull; {wh.stockoutRisk}
+                    </span>
+                  </div>
+                  <div className="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                    <div 
+                      className={`h-full rounded-full transition-all duration-500 ${
+                        isOver ? 'bg-gradient-to-r from-orange-500 to-rose-500' : isUnder ? 'bg-gradient-to-r from-amber-400 to-amber-600' : 'bg-gradient-to-r from-emerald-400 to-cyan-500'
+                      }`}
+                      style={{ width: `${barWidth}%` }}
+                    />
+                  </div>
+                  <div className="flex justify-between text-[10px] text-slate-400 font-mono">
+                    <span>Fill Rate: {wh.fillRate}</span>
+                    <span>Inventory Turnover: {wh.invTurn}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Shortage Reduction</span>
+            <span className="text-lg font-mono font-bold text-emerald-600 dark:text-emerald-400">-28.4%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Mitigated month-end stockouts</span>
+          </div>
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Holding Cost Savings</span>
+            <span className="text-lg font-mono font-bold text-cyan-600 dark:text-cyan-400">14.2%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Liquidated slow-moving buffer</span>
+          </div>
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Optimal Model</span>
+            <span className="text-lg font-mono font-bold text-indigo-600 dark:text-indigo-400">Logistic Reg.</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">High interpretability for ops</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // -------------------------------------------------------------
+  // 10. CUSTOMER BUYING PATTERNS & RFM (CASE STUDY 2)
+  // -------------------------------------------------------------
+  if (chartType === 'customer_buying_patterns') {
+    const segments = [
+      { name: 'Champions (High R, High F, High M)', share: 18.4, revenue: '48.2%', aov: '$420', retention: '94%' },
+      { name: 'Loyal Customers (Mod R, High F, Mod M)', share: 26.1, revenue: '28.6%', aov: '$280', retention: '86%' },
+      { name: 'Potential Loyalists (High R, Mod F, Low M)', share: 21.5, revenue: '12.4%', aov: '$140', retention: '68%' },
+      { name: 'At-Risk / Churning (Low R, High F, High M)', share: 14.8, revenue: '7.8%', aov: '$310', retention: '38%' },
+      { name: 'Hibernating / Dormant (Low R, Low F, Low M)', share: 19.2, revenue: '3.0%', aov: '$85', retention: '14%' }
+    ];
+
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-between flex-wrap gap-3 pb-3 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <TrendingUp className="w-4 h-4 text-cyan-500" />
+              RFM Customer Segmentation & Revenue Concentration
+            </h4>
+            <p className="text-xs text-slate-500 font-mono mt-0.5">3 Years POS Transaction History & Cross-Category Affinity Rules</p>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-mono">
+            <span className="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 font-bold">
+              Top 2 Tiers = 76.8% Revenue
+            </span>
+          </div>
+        </div>
+
+        <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 space-y-4">
+          <div className="text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 flex justify-between">
+            <span>Customer Population vs. Revenue Contribution Share</span>
+            <span className="text-cyan-500">Pareto 80/20 Distribution</span>
+          </div>
+
+          <div className="space-y-3">
+            {segments.map((seg, idx) => (
+              <div key={idx} className="space-y-1">
+                <div className="flex justify-between items-center text-xs font-mono">
+                  <span className="font-semibold text-slate-800 dark:text-slate-200">{seg.name}</span>
+                  <span className="text-cyan-600 dark:text-cyan-400 font-bold">Rev: {seg.revenue} &bull; AOV: {seg.aov}</span>
+                </div>
+                <div className="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden flex">
+                  <div 
+                    className="bg-cyan-500 h-full rounded-l-full"
+                    style={{ width: `${seg.share}%` }}
+                    title={`Population Share: ${seg.share}%`}
+                  />
+                  <div 
+                    className="bg-emerald-500 h-full rounded-r-full opacity-80"
+                    style={{ width: `${parseFloat(seg.revenue)}%` }}
+                    title={`Revenue Share: ${seg.revenue}`}
+                  />
+                </div>
+                <div className="flex justify-between text-[10px] text-slate-400 font-mono">
+                  <span>Audience Share: {seg.share}%</span>
+                  <span>90-Day Retention Probability: {seg.retention}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Cross-Sell Basket Lift</span>
+            <span className="text-lg font-mono font-bold text-emerald-600 dark:text-emerald-400">+19.4%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Via Apriori association rules</span>
+          </div>
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Dormant Win-Back</span>
+            <span className="text-lg font-mono font-bold text-cyan-600 dark:text-cyan-400">12.8%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">High-affinity discount triggers</span>
+          </div>
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">CLV Accuracy</span>
+            <span className="text-lg font-mono font-bold text-purple-600 dark:text-purple-400">0.89 R²</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">BG/NBD & Gamma-Gamma model</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // -------------------------------------------------------------
+  // 11. E-COMMERCE REVENUE ANALYTICS (CASE STUDY 3)
+  // -------------------------------------------------------------
+  if (chartType === 'ecommerce_revenue') {
+    const regionalData = [
+      { region: 'Sao Paulo / Southeast Hub', share: 44.2, revenue: '$4.21M', avgDeliveryDays: 4.2, returnRate: '2.8%' },
+      { region: 'Rio de Janeiro / Coastal', share: 18.6, revenue: '$1.78M', avgDeliveryDays: 5.8, returnRate: '3.6%' },
+      { region: 'Minas Gerais / Central', share: 14.2, revenue: '$1.35M', avgDeliveryDays: 6.4, returnRate: '3.1%' },
+      { region: 'Southern States (PR, SC, RS)', share: 13.8, revenue: '$1.31M', avgDeliveryDays: 7.1, returnRate: '3.4%' },
+      { region: 'Northeast / Remote North', share: 9.2, revenue: '$0.88M', avgDeliveryDays: 12.6, returnRate: '7.2%' }
+    ];
+
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-between flex-wrap gap-3 pb-3 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <BarChart3 className="w-4 h-4 text-cyan-500" />
+              Regional Revenue Distribution & Transit SLA Impact
+            </h4>
+            <p className="text-xs text-slate-500 font-mono mt-0.5">Multi-Category E-Commerce Orders & Delivery Velocity Telemetry</p>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-mono">
+            <span className="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 font-bold">
+              Top 3 Hubs = 77% Revenue
+            </span>
+          </div>
+        </div>
+
+        <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 space-y-4">
+          <div className="text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 flex justify-between">
+            <span>Gross Revenue Contribution by Regional Logistics Corridor</span>
+            <span className="text-cyan-500">Fast Delivery Correlates to +28% Repeat Orders</span>
+          </div>
+
+          <div className="space-y-3">
+            {regionalData.map((reg, idx) => (
+              <div key={idx} className="space-y-1">
+                <div className="flex justify-between items-center text-xs font-mono">
+                  <span className="font-semibold text-slate-800 dark:text-slate-200">{reg.region}</span>
+                  <span className="text-emerald-500 font-bold">{reg.revenue} ({reg.share}%)</span>
+                </div>
+                <div className="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                  <div 
+                    className="bg-gradient-to-r from-cyan-500 to-blue-600 h-full rounded-full"
+                    style={{ width: `${reg.share * 2}%` }}
+                  />
+                </div>
+                <div className="flex justify-between text-[10px] text-slate-400 font-mono">
+                  <span>Avg Transit Lead Time: {reg.avgDeliveryDays} days</span>
+                  <span>Return / Disputed Rate: {reg.returnRate}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Private-Label Opportunity</span>
+            <span className="text-lg font-mono font-bold text-emerald-600 dark:text-emerald-400">32.4%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Margin expansion in top categories</span>
+          </div>
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Cart Abandonment Mitigation</span>
+            <span className="text-lg font-mono font-bold text-cyan-600 dark:text-cyan-400">+14.6%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Dynamic free-shipping thresholds</span>
+          </div>
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Repeat Purchase Rate</span>
+            <span className="text-lg font-mono font-bold text-indigo-600 dark:text-indigo-400">41.8%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Automated re-order recommendations</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // -------------------------------------------------------------
+  // 12. NEW WHEELS AUTOMOTIVE SALES ANALYTICS (CASE STUDY 4)
+  // -------------------------------------------------------------
+  if (chartType === 'new_wheels_sql') {
+    const quarterData = [
+      { quarter: 'Q1 Launch', orders: 1240, avgDiscount: '4.2%', rating: 4.82, onTimePct: '96.2%' },
+      { quarter: 'Q2 Growth', orders: 2180, avgDiscount: '6.5%', rating: 4.64, onTimePct: '92.4%' },
+      { quarter: 'Q3 Peak', orders: 3450, avgDiscount: '8.8%', rating: 4.28, onTimePct: '84.8%' },
+      { quarter: 'Q4 Supply Crunch', orders: 2890, avgDiscount: '12.4%', rating: 3.91, onTimePct: '76.1%' }
+    ];
+
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-between flex-wrap gap-3 pb-3 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <TrendingUp className="w-4 h-4 text-cyan-500" />
+              Automotive Quarterly Order Growth vs. Fulfillment Delivery SLA
+            </h4>
+            <p className="text-xs text-slate-500 font-mono mt-0.5">Advanced MySQL Analytical Windows, CTEs & Lead-Time Analysis</p>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-mono">
+            <span className="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 font-bold">
+              Bottleneck Isolated: Q4 Delivery Delays
+            </span>
+          </div>
+        </div>
+
+        <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 space-y-4">
+          <div className="text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 flex justify-between">
+            <span>Quarterly Order Volume & On-Time Delivery Rate</span>
+            <span className="text-cyan-500">Customer CSAT Drops 0.4 pts per 2-day transit delay</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
+            {quarterData.map((q, idx) => (
+              <div key={idx} className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 space-y-2 text-center">
+                <div className="text-xs font-bold font-mono text-cyan-500">{q.quarter}</div>
+                <div className="text-xl font-extrabold font-mono text-slate-900 dark:text-white">{q.orders}</div>
+                <div className="text-[10px] text-slate-400 font-mono">Completed Units</div>
+                <div className="pt-2 border-t border-slate-200 dark:border-slate-800 space-y-1 text-[11px] font-mono">
+                  <div className="flex justify-between text-slate-600 dark:text-slate-300">
+                    <span>On-Time:</span>
+                    <span className="font-bold text-emerald-500">{q.onTimePct}</span>
+                  </div>
+                  <div className="flex justify-between text-slate-600 dark:text-slate-300">
+                    <span>CSAT:</span>
+                    <span className="font-bold text-cyan-400">{q.rating} / 5.0</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">SQL Query Optimization</span>
+            <span className="text-lg font-mono font-bold text-emerald-600 dark:text-emerald-400">&gt;10x Faster</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Composite indexing & indexed joins</span>
+          </div>
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Fulfillment SLA Rebound</span>
+            <span className="text-lg font-mono font-bold text-cyan-600 dark:text-cyan-400">95.8%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Dynamic regional dispatch buffer</span>
+          </div>
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Discount Leakage Saved</span>
+            <span className="text-lg font-mono font-bold text-indigo-600 dark:text-indigo-400">$340K</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Curtailed unconstrained discounting</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // -------------------------------------------------------------
+  // 13. INSURANCE CLAIMS & RISK ANALYTICS (CASE STUDY 5)
+  // -------------------------------------------------------------
+  if (chartType === 'insurance_claims') {
+    const cohorts = [
+      { cohort: 'High-Value Commercial Heavy Freight', lossRatio: 84.2, claimFreq: '14.8%', avgClaim: '$18,400' },
+      { cohort: 'Urban Fleet Delivery Vehicles', lossRatio: 72.5, claimFreq: '11.2%', avgClaim: '$8,200' },
+      { cohort: 'Regional Logistics Long-Haul', lossRatio: 64.1, claimFreq: '8.4%', avgClaim: '$12,600' },
+      { cohort: 'Suburban Light Commercial Vans', lossRatio: 51.8, claimFreq: '5.6%', avgClaim: '$4,500' },
+      { cohort: 'Corporate Fleet Preferred Risk', lossRatio: 42.6, claimFreq: '3.1%', avgClaim: '$3,800' }
+    ];
+
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-between flex-wrap gap-3 pb-3 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <Activity className="w-4 h-4 text-cyan-500" />
+              Insurance Loss Ratio & Claim Severity Distribution
+            </h4>
+            <p className="text-xs text-slate-500 font-mono mt-0.5">Tableau Executive Dashboard LOD Formulas & Policy Underwriting Cohorts</p>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-mono">
+            <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-bold">
+              Target Loss Ratio: &lt;65%
+            </span>
+          </div>
+        </div>
+
+        <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 space-y-4">
+          <div className="text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 flex justify-between">
+            <span>Actuarial Loss Ratio (%) by Vehicle Fleet Category</span>
+            <span className="text-cyan-500">Critical Underwriting Threshold = 70%</span>
+          </div>
+
+          <div className="space-y-3">
+            {cohorts.map((c, idx) => {
+              const isSevere = c.lossRatio > 70;
+              return (
+                <div key={idx} className="space-y-1">
+                  <div className="flex justify-between items-center text-xs font-mono">
+                    <span className="font-semibold text-slate-800 dark:text-slate-200">{c.cohort}</span>
+                    <span className={`px-2 py-0.5 rounded text-[10px] ${isSevere ? 'bg-rose-500/10 text-rose-500 font-bold' : 'bg-emerald-500/10 text-emerald-500'}`}>
+                      Loss Ratio: {c.lossRatio}%
+                    </span>
+                  </div>
+                  <div className="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                    <div 
+                      className={`h-full rounded-full transition-all duration-500 ${
+                        isSevere ? 'bg-gradient-to-r from-orange-500 to-rose-500' : 'bg-gradient-to-r from-emerald-400 to-cyan-500'
+                      }`}
+                      style={{ width: `${c.lossRatio}%` }}
+                    />
+                  </div>
+                  <div className="flex justify-between text-[10px] text-slate-400 font-mono">
+                    <span>Claim Frequency: {c.claimFreq}</span>
+                    <span>Avg Settlement Severity: {c.avgClaim}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Underwriting Margin Gain</span>
+            <span className="text-lg font-mono font-bold text-emerald-600 dark:text-emerald-400">+8.4%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">High-risk cohort premium rebalancing</span>
+          </div>
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Settlement Cycle Time</span>
+            <span className="text-lg font-mono font-bold text-cyan-600 dark:text-cyan-400">-35%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Automated low-severity triage</span>
+          </div>
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Fraud Anomaly Flag</span>
+            <span className="text-lg font-mono font-bold text-rose-500">93.2%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Precision on inflated claims</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // -------------------------------------------------------------
+  // 14. 12-MONTH DEMAND FORECASTING (CASE STUDY 6)
+  // -------------------------------------------------------------
+  if (chartType === 'demand_forecasting_chart') {
+    const horizon = [
+      { month: 'M+1', actual: 4200, arima: 4180, holt: 4210, lower: 3950, upper: 4410 },
+      { month: 'M+2', actual: 4450, arima: 4410, holt: 4430, lower: 4180, upper: 4640 },
+      { month: 'M+3', actual: 4800, arima: 4760, holt: 4790, lower: 4510, upper: 5010 },
+      { month: 'M+4', actual: 5120, arima: 5080, holt: 5110, lower: 4820, upper: 5340 },
+      { month: 'M+5', actual: 4900, arima: 4850, holt: 4880, lower: 4590, upper: 5110 },
+      { month: 'M+6', actual: 5300, arima: 5240, holt: 5280, lower: 4970, upper: 5510 },
+      { month: 'M+7', actual: 5650, arima: 5580, holt: 5610, lower: 5300, upper: 5860 },
+      { month: 'M+8', actual: 5900, arima: 5820, holt: 5860, lower: 5530, upper: 6110 },
+      { month: 'M+9', actual: 5400, arima: 5320, holt: 5360, lower: 5040, upper: 5600 },
+      { month: 'M+10', actual: 5150, arima: 5090, holt: 5120, lower: 4810, upper: 5370 },
+      { month: 'M+11', actual: 5800, arima: 5740, holt: 5770, lower: 5450, upper: 6030 },
+      { month: 'M+12', actual: 6400, arima: 6310, holt: 6370, lower: 6020, upper: 6620 }
+    ];
+
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-between flex-wrap gap-3 pb-3 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <TrendingUp className="w-4 h-4 text-cyan-500" />
+              12-Month Demand Forecast with ARIMA / SARIMA Confidence Bands
+            </h4>
+            <p className="text-xs text-slate-500 font-mono mt-0.5">3 Years Transaction History & Hierarchical Reconciliation Benchmarking</p>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-mono">
+            <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-bold">
+              Selected: SARIMA(1,1,1)(1,1,0)₁₂ &bull; MAPE: 4.8%
+            </span>
+          </div>
+        </div>
+
+        <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60">
+          <div className="text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 mb-3 flex justify-between">
+            <span>Projected SKU Volume vs Actual Horizon (±95% CI)</span>
+            <span className="text-cyan-500">Seasonal Peak in Month 12</span>
+          </div>
+
+          <div className="h-44 flex items-end justify-between gap-1.5 pt-6 pb-2 px-2 border-b border-l border-slate-300 dark:border-slate-700">
+            {horizon.map((h, i) => {
+              const heightPct = (h.actual / 7000) * 100;
+              return (
+                <div key={i} className="flex-1 flex flex-col items-center group">
+                  <span className="text-[9px] font-mono text-slate-400 opacity-0 group-hover:opacity-100 transition mb-1">
+                    {h.actual}
+                  </span>
+                  <div 
+                    className="w-full max-w-[28px] rounded-t bg-gradient-to-t from-cyan-600 to-emerald-400 group-hover:from-cyan-500 group-hover:to-teal-300 transition shadow-sm"
+                    style={{ height: `${heightPct}%` }}
+                    title={`${h.month}: Forecast ${h.arima} (Bounds: ${h.lower}-${h.upper})`}
+                  />
+                  <span className="text-[10px] font-mono text-slate-500 mt-2">
+                    {h.month}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex justify-between items-center text-[10px] font-mono text-slate-400 mt-2 px-2">
+            <span>Baseline M+1</span>
+            <span>Forecast MAPE: 4.8% (ARIMA) vs 6.2% (Holt-Winters)</span>
+            <span>Holiday Peak M+12</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Forecast Error (MAPE)</span>
+            <span className="text-lg font-mono font-bold text-emerald-600 dark:text-emerald-400">4.8%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Top-quartile retail benchmark</span>
+          </div>
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Safety Stock Reduction</span>
+            <span className="text-lg font-mono font-bold text-cyan-600 dark:text-cyan-400">18.2%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Tighter forecast error distribution</span>
+          </div>
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Out-of-Stock Incidents</span>
+            <span className="text-lg font-mono font-bold text-indigo-600 dark:text-indigo-400">-31.5%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Proactive replenishment lead-time</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // -------------------------------------------------------------
+  // 15. TELECOM CUSTOMER CHURN (CASE STUDY 7)
+  // -------------------------------------------------------------
+  if (chartType === 'telecom_churn') {
+    const contractTypes = [
+      { type: 'Month-to-Month Contracts', customers: 3875, churnRate: 42.7, avgBill: '$73.50', risk: 'High Churn Hazard' },
+      { type: 'One-Year Contract Terms', customers: 1473, churnRate: 11.3, avgBill: '$65.00', risk: 'Moderate Retention' },
+      { type: 'Two-Year Long-Term Contract', customers: 1695, churnRate: 2.8, avgBill: '$60.80', risk: 'Highly Stable (Safe)' }
+    ];
+
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-between flex-wrap gap-3 pb-3 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <Activity className="w-4 h-4 text-cyan-500" />
+              Telecom Churn Propensity by Contract Type & Billing Level
+            </h4>
+            <p className="text-xs text-slate-500 font-mono mt-0.5">7,043 Customer Records & Behavioral Tenure/Service Feature Modeling</p>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-mono">
+            <span className="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 font-bold">
+              Random Forest AUC: 0.842
+            </span>
+          </div>
+        </div>
+
+        <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 space-y-4">
+          <div className="text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 flex justify-between">
+            <span>Churn Rate (%) by Customer Contract Structure</span>
+            <span className="text-cyan-500">Month-to-Month churn is 15x higher than 2-Year</span>
+          </div>
+
+          <div className="space-y-3">
+            {contractTypes.map((c, idx) => (
+              <div key={idx} className="space-y-1">
+                <div className="flex justify-between items-center text-xs font-mono">
+                  <span className="font-semibold text-slate-800 dark:text-slate-200">{c.type}</span>
+                  <span className={`px-2 py-0.5 rounded text-[10px] ${
+                    c.churnRate > 30 ? 'bg-rose-500/10 text-rose-500 font-bold' : c.churnRate > 10 ? 'bg-amber-500/10 text-amber-500' : 'bg-emerald-500/10 text-emerald-500'
+                  }`}>
+                    Churn: {c.churnRate}% &bull; {c.risk}
+                  </span>
+                </div>
+                <div className="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                  <div 
+                    className={`h-full rounded-full transition-all duration-500 ${
+                      c.churnRate > 30 ? 'bg-gradient-to-r from-orange-500 to-rose-500' : c.churnRate > 10 ? 'bg-gradient-to-r from-amber-400 to-amber-600' : 'bg-gradient-to-r from-emerald-400 to-cyan-500'
+                    }`}
+                    style={{ width: `${c.churnRate * 2}%` }}
+                  />
+                </div>
+                <div className="flex justify-between text-[10px] text-slate-400 font-mono">
+                  <span>Customer Base: {c.customers.toLocaleString()} subscribers</span>
+                  <span>Average Monthly Charges: {c.avgBill}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Churn Recall</span>
+            <span className="text-lg font-mono font-bold text-emerald-600 dark:text-emerald-400">81.4%</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Captures high-risk subscribers</span>
+          </div>
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Retention Campaign ROI</span>
+            <span className="text-lg font-mono font-bold text-cyan-600 dark:text-cyan-400">3.8x</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Targeted contract migration discount</span>
+          </div>
+          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">Top Churn Predictor</span>
+            <span className="text-lg font-mono font-bold text-purple-600 dark:text-purple-400">Tenure &lt; 6mo</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">Followed by Fiber optic tech support</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return null;
 };

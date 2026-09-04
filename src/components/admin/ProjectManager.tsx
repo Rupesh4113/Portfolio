@@ -425,6 +425,17 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({ projects, onRefr
                     <option value="supply_chain">Multi-Tier Supply Chain Flow</option>
                     <option value="transportation_lane">Transportation Lane Network (Blue Yonder)</option>
                     <option value="nlp_pipeline">NLP Sentiment Pipeline (Twitter)</option>
+                    <option value="ecommerce_funnel">E-Commerce Attribution & Revenue Funnel</option>
+                    <option value="insurance_analytics">Insurance Risk Underwriting & Claims</option>
+                    <option value="telecom_churn">Telecom Customer Churn & Retention</option>
+                    <option value="predictive_maintenance">Fleet Predictive Maintenance & RUL</option>
+                    <option value="recommendation_engine">Two-Tower Recommendation Engine</option>
+                    <option value="uplift_causal_ml">Promotion Causal Uplift (X-Learner)</option>
+                    <option value="customer_segmentation">RFM Customer Segmentation & CLV</option>
+                    <option value="marketing_campaign">Marketing Mix Modeling (MMM)</option>
+                    <option value="iot_sensor_pipeline">IoT Sensor Imputation Pipeline</option>
+                    <option value="clinical_risk_pipeline">Clinical Survival & Cox Proportional</option>
+                    <option value="deep_learning_pipeline">Deep Learning Grid Search</option>
                     <option value="custom">Standard ML Systems Layout</option>
                   </select>
                 </div>
@@ -437,6 +448,13 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({ projects, onRefr
                     className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
                   >
                     <option value="">None / Custom</option>
+                    <option value="supply_chain_imbalance">Warehouse Demand-to-Supply Imbalance</option>
+                    <option value="customer_buying_patterns">RFM Segments & Cross-Sell Lift</option>
+                    <option value="ecommerce_revenue">E-Commerce Regional Revenue & Funnel</option>
+                    <option value="new_wheels_sql">Automotive Order Growth & CSAT vs SLA</option>
+                    <option value="insurance_claims">Insurance Loss Ratio & Claim Severity</option>
+                    <option value="demand_forecasting_chart">12-Month Demand Forecast & Bands</option>
+                    <option value="telecom_churn">Telecom Churn by Contract & Charges</option>
                     <option value="sensor_imputation">Sensor Data Imputation & Normalization</option>
                     <option value="clustering_pca">Silhouette Analysis & 3D PCA Scatter</option>
                     <option value="real_estate_regression">Regression Residuals & CV Comparison</option>

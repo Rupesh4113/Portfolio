@@ -52,6 +52,7 @@ const existingEnterpriseProjects: Project[] = [
       'Delivered automated alerts for proactive rerouting when delays exceeded tolerance limits.'
     ],
     architecture_diagram_type: 'transportation_lane',
+    quantitative_chart_type: 'new_wheels_sql',
     tech_stack: ['Python', 'XGBoost', 'Pandas', 'NumPy', 'Scikit-Learn', 'SQL', 'Blue Yonder TMS APIs', 'Tableau'],
     deployment_details: 'Integrated via RESTful prediction microservices interfacing with Blue Yonder enterprise message buses with low-latency sub-100ms inference.',
     monitoring_strategy: 'Automated drift detection tracking lane travel time distribution shifts, carrier performance changes, and seasonal model degradation.',
@@ -112,7 +113,8 @@ const existingEnterpriseProjects: Project[] = [
       'Increased fleet vehicle availability and customer rental satisfaction scores.',
       'Shifted maintenance operations from reactive firefighting to scheduled predictive care.'
     ],
-    architecture_diagram_type: 'custom',
+    architecture_diagram_type: 'predictive_maintenance',
+    quantitative_chart_type: 'sensor_imputation',
     tech_stack: ['Python', 'Random Forest', 'Scikit-Learn', 'Pandas', 'SQL', 'Seaborn', 'Power BI'],
     deployment_details: 'Batch scoring pipeline running nightly against telematics data warehouse, feeding alert work-orders directly to workshop maintenance portals.',
     monitoring_strategy: 'Weekly tracking of Precision/Recall curves against actual mechanic inspection tags; quarterly retraining with new vehicle telemetry data.',
@@ -173,7 +175,8 @@ const existingEnterpriseProjects: Project[] = [
       'Provided automated reason codes enabling personalized customer service intervention.',
       'Created executive Power BI cohort dashboards for VP of Customer Success.'
     ],
-    architecture_diagram_type: 'custom',
+    architecture_diagram_type: 'telecom_churn',
+    quantitative_chart_type: 'telecom_churn',
     tech_stack: ['Python', 'XGBoost', 'Logistic Regression', 'Scikit-Learn', 'Power BI', 'SQL', 'Matplotlib'],
     deployment_details: 'Weekly scoring pipeline writing customer risk scores and priority tiers into CRM marketing automation tools.',
     monitoring_strategy: 'Model performance tracked by lift in the top deciles and cumulative gains charts; monitored for demographic concept drift.',
@@ -235,6 +238,7 @@ const existingEnterpriseProjects: Project[] = [
       'Visualized live sentiment flow: Twitter Data → Cleaning → VADER/LSTM → Classification → Dashboard.'
     ],
     architecture_diagram_type: 'nlp_pipeline',
+    quantitative_chart_type: 'bank_marketing',
     tech_stack: ['Python', 'LSTM', 'PyTorch / Keras', 'VADER', 'NLTK', 'Pandas', 'Streamlit / Power BI', 'Regex'],
     deployment_details: 'Stream processing worker containerized with Docker, processing live incoming feeds and publishing classified scores to an analytical database.',
     monitoring_strategy: 'Continuous tracking of slang evolution and out-of-vocabulary (OOV) token percentages; retraining on weekly active corpora.',
@@ -295,6 +299,7 @@ const existingEnterpriseProjects: Project[] = [
       'Delivered interactive executive supply chain simulation dashboards for VP of Logistics.'
     ],
     architecture_diagram_type: 'supply_chain',
+    quantitative_chart_type: 'supply_chain_imbalance',
     tech_stack: ['Python', 'SciPy / PuLP', 'Scikit-Learn', 'SQL', 'GeoPandas', 'Power BI', 'Matplotlib'],
     deployment_details: 'Integrated into quarterly supply chain network planning reviews, generating automated reallocation schedules for operations.',
     monitoring_strategy: 'Quarterly review of actual vs planned freight cost variance; dynamic sensitivity analysis against diesel fuel price fluctuations.',
@@ -360,6 +365,7 @@ const existingEnterpriseProjects: Project[] = [
       'Provides actionable safety stock buffer recommendations based on prediction interval percentiles.'
     ],
     architecture_diagram_type: 'demand_forecasting',
+    quantitative_chart_type: 'demand_forecasting_chart',
     tech_stack: ['Python', 'XGBoost', 'LightGBM', 'Prophet', 'Pandas', 'Statsmodels', 'Power BI'],
     deployment_details: 'Designed as a batch forecasting job scheduled in Airflow, writing forecasts and confidence bands directly into supply planning staging tables.',
     monitoring_strategy: 'Rolling WMAPE tracking against actuals with automatic alert thresholds when error exceeds 15% across key revenue-generating SKUs.',
@@ -416,6 +422,7 @@ const existingEnterpriseProjects: Project[] = [
       'Identified cross-brand cannibalization risks prior to promotional rollout.'
     ],
     architecture_diagram_type: 'pricing_elasticity',
+    quantitative_chart_type: 'real_estate_regression',
     tech_stack: ['Python', 'Statsmodels', 'Scikit-Learn', 'SciPy Optimize', 'Pandas', 'Plotly'],
     deployment_details: 'Interactive what-if pricing calculator with slider controls for category managers to simulate price adjustments.',
     monitoring_strategy: 'Periodic recalibration of elasticity coefficients as consumer purchasing power and competitor behavior evolve.',
@@ -470,7 +477,8 @@ const existingEnterpriseProjects: Project[] = [
       'Portfolio demonstration: Prevents discount subsidization of existing loyal customer purchases.',
       'Provides a data-driven blueprint for personalized promotional targeting.'
     ],
-    architecture_diagram_type: 'custom',
+    architecture_diagram_type: 'uplift_causal_ml',
+    quantitative_chart_type: 'customer_buying_patterns',
     tech_stack: ['Python', 'CausalML', 'Scikit-Learn', 'LightGBM', 'Pandas', 'Matplotlib'],
     deployment_details: 'Campaign audience builder module that outputs targeted customer lists directly into CRM engagement platforms.',
     monitoring_strategy: 'A/B holdout testing for every outbound marketing cycle to measure true incremental margin vs modeled predictions.',
@@ -526,6 +534,7 @@ const existingEnterpriseProjects: Project[] = [
       'Delivers automated daily reorder recommendations with risk-scored urgency.'
     ],
     architecture_diagram_type: 'supply_chain',
+    quantitative_chart_type: 'supply_chain_imbalance',
     tech_stack: ['Python', 'Lifelines (Survival Analysis)', 'NumPy', 'Pandas', 'Scikit-Learn', 'Power BI'],
     deployment_details: 'Daily cron job evaluating current stock levels and supplier lead-times, producing purchase order replenishment queues.',
     monitoring_strategy: 'Weekly comparison of projected vs actual stockouts with root-cause categorization (supplier delay vs unexpected demand surge).',
@@ -581,6 +590,7 @@ const existingEnterpriseProjects: Project[] = [
       'Enables optimized inventory placement between centralized distribution centers and localized retail stores.'
     ],
     architecture_diagram_type: 'demand_forecasting',
+    quantitative_chart_type: 'demand_forecasting_chart',
     tech_stack: ['Python', 'LightGBM', 'Statsmodels', 'Pandas', 'FastAPI', 'Tableau'],
     deployment_details: 'Microservice exposing channel-specific demand predictions to both e-commerce fulfillment engines and store replenishment systems.',
     monitoring_strategy: 'Channel variance monitoring with automated alerts when channel ratio diverges beyond 10% from historical trends.',
@@ -635,7 +645,8 @@ const existingEnterpriseProjects: Project[] = [
       'Portfolio demonstration: Generates concrete persona profiles for marketing teams (e.g., "High-Value Loyalists", "Dormant At-Risk", "Deal Seekers").',
       'Enables tailored acquisition spend limits based on projected customer lifetime return.'
     ],
-    architecture_diagram_type: 'custom',
+    architecture_diagram_type: 'customer_segmentation',
+    quantitative_chart_type: 'clustering_pca',
     tech_stack: ['Python', 'Lifetimes Package', 'Scikit-Learn', 'Pandas', 'Seaborn', 'Power BI'],
     deployment_details: 'Monthly batch job updating customer segment tags and CLV scores in marketing automation databases.',
     monitoring_strategy: 'Quarterly review of segment transition matrices (tracking how many customers graduate from "New" to "Loyal").',
@@ -691,7 +702,8 @@ const existingEnterpriseProjects: Project[] = [
       'Portfolio demonstration: Emulates modern e-commerce recommendation architectures (Candidate Generation → Re-Ranking).',
       'Balances recommendation accuracy with catalog diversity and novel discovery.'
     ],
-    architecture_diagram_type: 'custom',
+    architecture_diagram_type: 'recommendation_engine',
+    quantitative_chart_type: 'ecommerce_revenue',
     tech_stack: ['Python', 'Implicit', 'LightGBM', 'Annoy / FAISS', 'FastAPI', 'Redis'],
     deployment_details: 'FastAPI microservice utilizing Redis for caching candidate embeddings and serving recommendations in under 50ms.',
     monitoring_strategy: 'A/B testing click-through rates (CTR) and conversion rates per recommendation carousel type; monitoring embedding drift.',
@@ -748,6 +760,7 @@ const existingEnterpriseProjects: Project[] = [
       'Includes automated concept drift alarms triggering retraining jobs.'
     ],
     architecture_diagram_type: 'sagemaker_mlops',
+    quantitative_chart_type: 'mnist_optimization',
     tech_stack: ['AWS SageMaker', 'Python', 'Docker', 'Amazon S3', 'CloudWatch', 'FastAPI', 'GitHub Actions'],
     deployment_details: 'Automated CI/CD workflow triggered via GitHub Actions, building Docker images and executing SageMaker Pipeline SDK definitions.',
     monitoring_strategy: 'SageMaker Model Monitor tracking baseline feature distributions and logging drift alerts to CloudWatch and SNS.',
@@ -802,7 +815,8 @@ const existingEnterpriseProjects: Project[] = [
       'Portfolio demonstration: Solves the post-cookie privacy attribution challenge through aggregate macro modeling.',
       'Includes interactive budget allocation simulator for marketing directors.'
     ],
-    architecture_diagram_type: 'custom',
+    architecture_diagram_type: 'marketing_campaign',
+    quantitative_chart_type: 'bank_marketing',
     tech_stack: ['Python', 'PyMC / Stan', 'Statsmodels', 'Scikit-Learn', 'Pandas', 'Plotly', 'Power BI'],
     deployment_details: 'Quarterly planning dashboard allowing commercial executives to run budget allocation simulations.',
     monitoring_strategy: 'Ongoing calibration against matched-market geolift testing experiments to validate observational model parameters.',
@@ -857,6 +871,7 @@ const existingEnterpriseProjects: Project[] = [
       'Eliminated departmental silos between commercial sales and supply chain planning.'
     ],
     architecture_diagram_type: 'demand_forecasting',
+    quantitative_chart_type: 'demand_forecasting_chart',
     tech_stack: ['Python', 'FastAPI', 'PostgreSQL', 'Power BI', 'DAX', 'Docker', 'Tailwind CSS'],
     deployment_details: 'Cloud deployed analytical backend with role-based access control and Power BI embedded executive views.',
     monitoring_strategy: 'Automated data pipeline health monitoring, query performance logging, and user session telemetry.',

@@ -79,6 +79,7 @@ export const businessCaseStudies: Project[] = [
       'Improved warehouse-level replenishment allocation and executive operational visibility.'
     ],
     architecture_diagram_type: 'supply_chain',
+    quantitative_chart_type: 'supply_chain_imbalance',
     tech_stack: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'K-Means Clustering', 'Logistic Regression', 'Decision Trees', 'Random Forest', 'Matplotlib', 'Seaborn'],
     deployment_details: 'Configured as a modular Python analytics workflow capable of ingesting monthly warehouse inventories and outputting SKU-warehouse replenishment target tables.',
     monitoring_strategy: 'Quarterly model recalibration comparing predicted vs. actual stockout rates and monitoring warehouse cluster drift.',
@@ -179,6 +180,7 @@ export const businessCaseStudies: Project[] = [
       'Optimized marketing ROI through targeted segment-specific campaign communications.'
     ],
     architecture_diagram_type: 'pricing_elasticity',
+    quantitative_chart_type: 'customer_buying_patterns',
     tech_stack: ['Python', 'Pandas', 'NumPy', 'RFM Analysis', 'Market Basket Analysis', 'Apriori', 'Association Rules', 'Matplotlib', 'Seaborn'],
     deployment_details: 'Segment definitions and association rule lookup matrices integrated into customer marketing automation and counter POS displays.',
     monitoring_strategy: 'Monthly tracking of customer segment migration (movement between At-Risk and Active) and association rule confidence stability.',
@@ -272,7 +274,8 @@ export const businessCaseStudies: Project[] = [
       'Projected annual revenue optimization through regional re-allocation: [Add Revenue Impact]',
       'Improved product catalog margin mix across online storefronts.'
     ],
-    architecture_diagram_type: 'custom',
+    architecture_diagram_type: 'ecommerce_funnel',
+    quantitative_chart_type: 'ecommerce_revenue',
     tech_stack: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Statistical Aggregation', 'Jupyter Notebook'],
     deployment_details: 'Automated Python reporting pipeline generating monthly revenue decomposition summaries exported to executive analytics portals.',
     monitoring_strategy: 'Monthly tracking of regional revenue contribution ratios, brand churn, and average order value movements.',
@@ -377,6 +380,7 @@ export const businessCaseStudies: Project[] = [
       'Created standardized executive SQL analytical views for automated quarterly management reporting.'
     ],
     architecture_diagram_type: 'transportation_lane',
+    quantitative_chart_type: 'new_wheels_sql',
     tech_stack: ['MySQL', 'SQL', 'Window Functions', 'CTEs', 'Relational Database Design', 'Data Analysis', 'Business Intelligence'],
     deployment_details: 'Stored procedures and parameterized SQL scripts deployed for automated quarterly executive report generation.',
     monitoring_strategy: 'Weekly execution of customer rating alerts and shipping delay tracking queries across fulfillment centers.',
@@ -469,7 +473,8 @@ export const businessCaseStudies: Project[] = [
       'Targeted claim processing acceleration: [Add Processing Days] reduction',
       'Enhanced actuarial governance and underwriting portfolio profitability.'
     ],
-    architecture_diagram_type: 'custom',
+    architecture_diagram_type: 'insurance_analytics',
+    quantitative_chart_type: 'insurance_claims',
     tech_stack: ['Tableau', 'Tableau Desktop', 'Dashboard Design', 'Data Modeling', 'KPI Development', 'Visual Analytics', 'Excel / CSV / SQL Data Sources'],
     deployment_details: 'Published to Tableau Server / Tableau Public with interactive filters, role-based security permissions, and mobile executive layouts.',
     monitoring_strategy: 'Monthly dashboard refresh with automated alerts when loss ratios exceed allowable risk thresholds.',
@@ -575,6 +580,7 @@ export const businessCaseStudies: Project[] = [
       'Improved sales target setting and supply chain operational planning accuracy.'
     ],
     architecture_diagram_type: 'demand_forecasting',
+    quantitative_chart_type: 'demand_forecasting_chart',
     tech_stack: ['Python', 'Statsmodels', 'Time Series Analysis', 'ARIMA', 'SARIMA', 'Exponential Smoothing', 'Pandas', 'NumPy', 'Matplotlib'],
     deployment_details: 'Packaged into an automated Python forecasting script producing 12-month forward projection tables with confidence intervals for ERP import.',
     monitoring_strategy: 'Monthly tracking of tracking signals, MAPE drift against incoming sales actuals, and residual autocorrelation tests.',
@@ -717,7 +723,8 @@ export const businessCaseStudies: Project[] = [
       'Maximized retention budget efficiency through precision CLV targeting: [Add Revenue Impact]',
       'Demonstrated transferable readiness for telecommunications customer analytics leadership.'
     ],
-    architecture_diagram_type: 'custom',
+    architecture_diagram_type: 'telecom_churn',
+    quantitative_chart_type: 'telecom_churn',
     tech_stack: ['Python', 'Scikit-learn', 'Logistic Regression', 'Random Forest', 'SVM', 'Decision Trees', 'KNN', 'Naive Bayes', 'LDA', 'Pandas', 'NumPy', 'Matplotlib'],
     deployment_details: 'Conceptualized as an enterprise batch-scoring scoring pipeline evaluating subscriber telemetry weekly to populate CRM retention queues.',
     monitoring_strategy: 'Weekly tracking of ROC-AUC stability, population stability index (PSI) for subscriber usage features, and retention campaign conversion lift.',

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   X, 
   ArrowLeft, 
@@ -44,6 +44,9 @@ export const ProjectCaseStudyView: React.FC<ProjectCaseStudyViewProps> = ({ proj
   }, []);
 
   const isProfessional = project.project_type === 'professional';
+  const hasVisuals = Boolean(project.quantitative_chart_type);
+  const hasArch = Boolean(project.architecture_diagram_type);
+  const [activeVisualTab, setActiveVisualTab] = useState<'analytics' | 'architecture'>('analytics');
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-md flex items-start justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-200">
@@ -173,23 +176,52 @@ export const ProjectCaseStudyView: React.FC<ProjectCaseStudyViewProps> = ({ proj
           </div>
 
           {/* Interactive Visual Analytics / Custom Architecture Chart */}
-          {(project.quantitative_chart_type || project.architecture_diagram_type) && (
+          {(hasVisuals || hasArch) && (
             <div className="space-y-3">
-              <h3 className="text-sm font-bold font-mono text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
-                <BarChart3 className="w-4 h-4 text-cyan-500" />
-                Visual Analytics & Interactive Architecture
-              </h3>
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <h3 className="text-sm font-bold font-mono text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                  <BarChart3 className="w-4 h-4 text-cyan-500" />
+                  Visual Analytics & Interactive Architecture
+                </h3>
+
+                {hasVisuals && hasArch && (
+                  <div className="flex items-center p-1 rounded-xl bg-slate-200/70 dark:bg-slate-800/80 text-xs font-mono">
+                    <button
+                      onClick={() => setActiveVisualTab('analytics')}
+                      className={`px-3 py-1 rounded-lg transition-all flex items-center gap-1.5 ${
+                        activeVisualTab === 'analytics'
+                          ? 'bg-white dark:bg-slate-900 text-cyan-600 dark:text-cyan-400 font-bold shadow-sm'
+                          : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      }`}
+                    >
+                      <Activity className="w-3.5 h-3.5" />
+                      <span>Visual Analytics</span>
+                    </button>
+                    <button
+                      onClick={() => setActiveVisualTab('architecture')}
+                      className={`px-3 py-1 rounded-lg transition-all flex items-center gap-1.5 ${
+                        activeVisualTab === 'architecture'
+                          ? 'bg-white dark:bg-slate-900 text-cyan-600 dark:text-cyan-400 font-bold shadow-sm'
+                          : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      }`}
+                    >
+                      <Layers className="w-3.5 h-3.5" />
+                      <span>Interactive Architecture</span>
+                    </button>
+                  </div>
+                )}
+              </div>
               
               <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
-                {project.quantitative_chart_type && (
+                {(!hasArch || activeVisualTab === 'analytics') && hasVisuals && (
                   <QuantitativeVisuals 
                     chartType={project.quantitative_chart_type}
                     projectTitle={project.title}
                   />
                 )}
 
-                {project.architecture_diagram_type && !project.quantitative_chart_type && (
-                  <ArchitectureDiagram type={project.architecture_diagram_type} />
+                {(!hasVisuals || activeVisualTab === 'architecture') && hasArch && (
+                  <ArchitectureDiagram type={project.architecture_diagram_type!} title={project.title} />
                 )}
               </div>
             </div>
