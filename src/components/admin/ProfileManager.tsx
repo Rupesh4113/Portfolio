@@ -236,9 +236,18 @@ export const ProfileManager: React.FC<ProfileManagerProps> = ({ profile, onRefre
               />
               {avatarUploading && <span className="text-xs text-cyan-500 block">Uploading image...</span>}
               {formData.avatar_url && (
-                <div className="text-[11px] font-mono text-emerald-500 flex items-center space-x-1 pt-1">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>Photo active</span>
+                <div className="flex items-center space-x-3 pt-2">
+                  <img 
+                    src={formData.avatar_url.startsWith('http') || formData.avatar_url.startsWith('data:') 
+                      ? formData.avatar_url 
+                      : `${import.meta.env.BASE_URL}${formData.avatar_url.replace(/^\.?\/?(public\/)?/, '')}`}
+                    alt="Preview" 
+                    className="w-12 h-12 rounded-lg object-cover object-[50%_22%] border border-slate-300 dark:border-slate-700 shadow-sm" 
+                  />
+                  <div className="text-[11px] font-mono text-emerald-500 flex items-center space-x-1">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    <span>Photo active</span>
+                  </div>
                 </div>
               )}
             </div>

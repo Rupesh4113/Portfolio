@@ -12,6 +12,7 @@ import { LinkedinIcon, GithubIcon } from '../common/SocialIcons';
 import { Profile } from '../../types';
 import { fireConfetti } from '../../lib/utils';
 import { Badge } from '../common/Badge';
+import rupeshPhoto from '../../assets/images/rupesh_pandey.jpg';
 
 interface HeroProps {
   profile: Profile;
@@ -21,6 +22,16 @@ export const Hero: React.FC<HeroProps> = ({ profile }) => {
   const handleResumeDownload = () => {
     fireConfetti();
   };
+
+  const isCustomUrl = profile.avatar_url && 
+    !profile.avatar_url.includes('favicon.svg') && 
+    !profile.avatar_url.startsWith('public');
+
+  const avatarSrc = isCustomUrl
+    ? (profile.avatar_url.startsWith('http') || profile.avatar_url.startsWith('data:') 
+        ? profile.avatar_url 
+        : `${import.meta.env.BASE_URL}${profile.avatar_url.replace(/^\.?\//, '')}`)
+    : rupeshPhoto;
 
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden tech-grid-pattern">
@@ -130,28 +141,16 @@ export const Hero: React.FC<HeroProps> = ({ profile }) => {
               <div className="relative rounded-2xl border border-slate-300/80 dark:border-slate-700/80 bg-white dark:bg-slate-900/90 p-6 shadow-2xl backdrop-blur-sm">
 
                 {/* Profile Image or Technical Avatar */}
-                <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-slate-900 border border-slate-200 dark:border-slate-800 mb-6 group">
-                  {profile.avatar_url ? (
-                    <img
-                      src={profile.avatar_url}
-                      alt={profile.full_name}
-                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="flex flex-col items-center justify-center p-6 w-full h-full text-center space-y-4">
-                      <div className="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-tr from-cyan-500 via-teal-500 to-blue-600 flex items-center justify-center text-white text-3xl font-extrabold font-mono shadow-xl shadow-cyan-500/30">
-                        RP
-                      </div>
-                      <div>
-                        <p className="text-sm font-bold text-slate-900 dark:text-white">
-                          Rupesh Kumar Pandey
-                        </p>
-                        <p className="text-xs font-mono text-cyan-600 dark:text-cyan-400 mt-0.5">
-                          Senior Data Scientist
-                        </p>
-                      </div>
-                    </div>
-                  )}
+                <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-slate-900 border border-slate-200 dark:border-slate-800 mb-6 group shadow-inner">
+                  <img
+                    src={avatarSrc}
+                    alt={profile.full_name}
+                    onError={(e) => {
+                      // Fallback to bundled asset if external fails
+                      e.currentTarget.src = rupeshPhoto;
+                    }}
+                    className="w-full h-full object-cover object-[50%_22%] transition-transform duration-500 group-hover:scale-105"
+                  />
 
                   {/* Corner Tech Watermark */}
                   <div className="absolute bottom-2 right-2 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-md text-[10px] font-mono text-emerald-400 border border-emerald-500/30 shadow-sm">
