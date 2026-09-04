@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Navbar } from '../components/common/Navbar';
 import { Footer } from '../components/common/Footer';
 import { Hero } from '../components/home/Hero';
-import { StatsSection } from '../components/home/StatsSection';
 import { AboutSection } from '../components/home/AboutSection';
-import { ExperienceTimeline } from '../components/home/ExperienceTimeline';
+import { CapabilitiesSection } from '../components/home/CapabilitiesSection';
+import { QuantitativeMetricsSection } from '../components/home/QuantitativeMetricsSection';
 import { FeaturedProjects } from '../components/home/FeaturedProjects';
-import { ModelPerformanceDashboard } from '../components/home/ModelPerformanceDashboard';
-import { TechStackSection } from '../components/home/TechStackSection';
-import { DashboardsSection } from '../components/home/DashboardsSection';
-import { SkillsSection } from '../components/home/SkillsSection';
+import { DomainExpertiseSection } from '../components/home/DomainExpertiseSection';
+import { MethodsSection } from '../components/home/MethodsSection';
+import { ExperienceTimeline } from '../components/home/ExperienceTimeline';
 import { EducationSection } from '../components/home/EducationSection';
+import { TechStackSection } from '../components/home/TechStackSection';
 import { ContactSection } from '../components/home/ContactSection';
 import { 
   fetchProfile, 
@@ -83,39 +83,40 @@ export const HomePage: React.FC = () => {
       <Navbar resumeUrl={profile.resume_url} />
 
       <main className="flex-1">
+        {/* 1. Hero */}
         <Hero profile={profile} />
-        
-        <StatsSection
-          yearsTotal={profile.years_total}
-          yearsDS={profile.years_data_science}
-          educationHighlight={profile.education_highlight}
-          enterpriseHighlight={profile.enterprise_highlight}
-        />
 
+        {/* 2. Professional Summary */}
         <AboutSection profile={profile} />
 
-        <ExperienceTimeline experiences={experiences} />
+        {/* 3. Core Analytics Capabilities */}
+        <CapabilitiesSection />
 
-        <ModelPerformanceDashboard 
-          onSelectProject={(slug) => {
-            const el = document.getElementById('projects');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }}
-        />
+        {/* 4. Quantitative Portfolio Metrics */}
+        <QuantitativeMetricsSection />
 
+        {/* 5. Featured Projects (includes 7 Case Studies, Comparison Matrix, and Telecom Analytics Showcase) */}
         <FeaturedProjects projects={projects} />
 
-        <TechStackSection />
+        {/* 6. Domain Expertise */}
+        <DomainExpertiseSection />
 
-        <DashboardsSection dashboards={dashboards} />
+        {/* 7. Machine Learning & Analytics Methods */}
+        <MethodsSection />
 
-        <SkillsSection skills={skills} />
+        {/* 8. Professional Experience */}
+        <ExperienceTimeline experiences={experiences} />
 
+        {/* 9. Education */}
         <EducationSection 
           education={education} 
           certifications={certifications} 
         />
 
+        {/* 10. Technology Stack */}
+        <TechStackSection />
+
+        {/* 11. Contact / Resume CTA */}
         <ContactSection
           email={profile.email}
           phone={profile.phone}

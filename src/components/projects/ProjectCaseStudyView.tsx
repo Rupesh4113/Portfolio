@@ -392,7 +392,7 @@ export const ProjectCaseStudyView: React.FC<ProjectCaseStudyViewProps> = ({ proj
                 <div className="space-y-3">
                   <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center space-x-2">
                     <Lightbulb className="w-4 h-4 text-amber-500" />
-                    <span>12. Key Findings</span>
+                    <span>6. Key Findings</span>
                   </h3>
                   <ul className="space-y-2 pl-6 border-l-2 border-amber-500/30 text-sm text-slate-600 dark:text-slate-300">
                     {project.key_findings.map((finding, idx) => (
@@ -405,11 +405,94 @@ export const ProjectCaseStudyView: React.FC<ProjectCaseStudyViewProps> = ({ proj
                 </div>
               )}
 
+              {/* 7. Business Recommendations */}
+              {project.business_recommendations && project.business_recommendations.length > 0 && (
+                <div className="space-y-3">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+                    <Sparkles className="w-4 h-4 text-cyan-500" />
+                    <span>7. Business Recommendations & Action Plan</span>
+                  </h3>
+                  <div className="pl-6 border-l-2 border-cyan-500/30 space-y-2.5">
+                    {project.business_recommendations.map((rec, idx) => (
+                      <div key={idx} className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 flex items-start space-x-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                        <span className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 font-medium">
+                          {rec}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* RFM Segments (if present) */}
+              {project.rfm_segments && project.rfm_segments.length > 0 && (
+                <div className="space-y-3">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+                    <Target className="w-4 h-4 text-purple-500" />
+                    <span>RFM Customer Segmentation Tiers</span>
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-6 border-l-2 border-purple-500/30">
+                    {project.rfm_segments.map((seg, idx) => (
+                      <div key={idx} className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
+                        <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400 block mb-1">{seg.name}</span>
+                        <p className="text-xs text-slate-600 dark:text-slate-300 mb-2">{seg.description}</p>
+                        {seg.action && (
+                          <div className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 p-1.5 rounded border border-emerald-500/20">
+                            <strong>Action:</strong> {seg.action}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Telecom Use Cases (if present) */}
+              {project.telecom_use_cases && project.telecom_use_cases.length > 0 && (
+                <div className="space-y-3">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+                    <Cpu className="w-4 h-4 text-cyan-500" />
+                    <span>Transferable Telecom Use Cases</span>
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-6 border-l-2 border-cyan-500/30">
+                    {project.telecom_use_cases.map((uc, idx) => (
+                      <div key={idx} className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
+                        <span className="text-xs font-bold text-slate-900 dark:text-white block mb-1">{uc.title}</span>
+                        <p className="text-xs text-slate-600 dark:text-slate-300 mb-2">{uc.description}</p>
+                        {uc.impact && (
+                          <div className="text-[11px] font-mono text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 p-1.5 rounded border border-cyan-500/20">
+                            {uc.impact}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* SQL Techniques (if present) */}
+              {project.sql_techniques && project.sql_techniques.length > 0 && (
+                <div className="space-y-3">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+                    <Terminal className="w-4 h-4 text-blue-500" />
+                    <span>Advanced SQL Techniques Employed</span>
+                  </h3>
+                  <div className="flex flex-wrap gap-2 pl-6 border-l-2 border-blue-500/30">
+                    {project.sql_techniques.map((sql, idx) => (
+                      <span key={idx} className="px-2.5 py-1 rounded-lg text-xs font-mono bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 font-medium">
+                        {sql}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* 13. Business / Analytical Impact */}
               <div className="space-y-3">
                 <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center space-x-2">
                   <Compass className="w-4 h-4 text-emerald-500" />
-                  <span>13. Business & Analytical Impact</span>
+                  <span>Business & Analytical Impact</span>
                 </h3>
                 <ul className="space-y-2 pl-6 border-l-2 border-emerald-500/30 text-sm text-slate-600 dark:text-slate-300">
                   {project.business_impact.map((impact, idx) => (
@@ -510,6 +593,36 @@ export const ProjectCaseStudyView: React.FC<ProjectCaseStudyViewProps> = ({ proj
                       <span className="flex items-center gap-2">
                         <FolderGit2 className="w-3.5 h-3.5 text-emerald-500" />
                         View GitHub
+                      </span>
+                      <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+                    </a>
+                  )}
+
+                  {project.tableau_url && (
+                    <a
+                      href={project.tableau_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-cyan-500 text-slate-800 dark:text-slate-200 font-semibold transition"
+                    >
+                      <span className="flex items-center gap-2">
+                        <BarChart3 className="w-3.5 h-3.5 text-indigo-500" />
+                        View Tableau Dashboard
+                      </span>
+                      <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+                    </a>
+                  )}
+
+                  {project.dataset_url && (
+                    <a
+                      href={project.dataset_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-cyan-500 text-slate-800 dark:text-slate-200 font-semibold transition"
+                    >
+                      <span className="flex items-center gap-2">
+                        <Database className="w-3.5 h-3.5 text-teal-500" />
+                        View Dataset
                       </span>
                       <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
                     </a>

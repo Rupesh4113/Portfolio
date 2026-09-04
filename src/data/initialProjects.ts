@@ -1,4 +1,5 @@
 import { Project } from '../types';
+import { businessCaseStudies } from './businessCaseStudies';
 import { quantitativeProjects } from './quantitativeProjects';
 
 const existingEnterpriseProjects: Project[] = [
@@ -873,10 +874,16 @@ const existingEnterpriseProjects: Project[] = [
 ];
 
 export const initialProjects: Project[] = [
-  ...quantitativeProjects,
+  ...businessCaseStudies,
+  ...quantitativeProjects.map((p, idx) => ({
+    ...p,
+    is_featured: false,
+    display_order: businessCaseStudies.length + idx + 1
+  })),
   ...existingEnterpriseProjects.map((p, idx) => ({ 
     ...p, 
-    display_order: quantitativeProjects.length + idx + 1 
+    is_featured: false,
+    display_order: businessCaseStudies.length + quantitativeProjects.length + idx + 1 
   }))
 ];
 

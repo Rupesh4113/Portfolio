@@ -61,13 +61,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ profile }) => {
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-mono font-medium">
-            <span>Professional Profile</span>
+            <span>Professional Summary</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Engineering Rigor Meets Machine Learning Leadership
+            Transforming Complex Business Problems into Predictive Solutions
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg">
-            A career built on 11+ years of enterprise technical excellence, bridging rigorous systems thinking with modern predictive data science.
+            A proven career bridging hands-on machine learning, time-series forecasting, and relational SQL engineering with actionable executive decision support.
           </p>
         </div>
 

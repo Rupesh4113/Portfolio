@@ -51,6 +51,17 @@ export interface Project {
   validation_strategy?: string;
   hyperparameter_optimization?: string;
   key_findings?: string[];
+  business_recommendations?: string[];
+  methodology_steps?: string[];
+  data_scope?: string;
+  selected_model?: string;
+  analytics_type?: string;
+  sql_techniques?: string[];
+  rfm_segments?: Array<{ name: string; description: string; count?: string; action?: string }>;
+  confidence_intervals?: { lower: string; upper: string; point: string };
+  telecom_use_cases?: Array<{ title: string; description: string; impact?: string }>;
+  tableau_url?: string;
+  dataset_url?: string;
   project_date?: string;
   quantitative_chart_type?: string;
   model_comparison_data?: Array<{ model: string; [key: string]: any }>;

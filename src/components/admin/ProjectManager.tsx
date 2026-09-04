@@ -510,18 +510,33 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({ projects, onRefr
                 </div>
               </div>
 
-              {/* Key Findings */}
-              <div>
-                <label className="block text-xs font-mono text-slate-500 mb-1">
-                  Key Findings (one per line)
-                </label>
-                <textarea
-                  rows={2}
-                  placeholder="Key finding 1&#10;Key finding 2"
-                  value={currentProject.key_findings?.join('\n') || ''}
-                  onChange={(e) => setCurrentProject({ ...currentProject, key_findings: e.target.value.split('\n').map(s => s.trim()).filter(Boolean) })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
-                />
+              {/* Key Findings & Business Recommendations */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-1">
+                    Key Findings (one per line)
+                  </label>
+                  <textarea
+                    rows={2}
+                    placeholder="Key finding 1&#10;Key finding 2"
+                    value={currentProject.key_findings?.join('\n') || ''}
+                    onChange={(e) => setCurrentProject({ ...currentProject, key_findings: e.target.value.split('\n').map(s => s.trim()).filter(Boolean) })}
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-1">
+                    Business Recommendations (one per line)
+                  </label>
+                  <textarea
+                    rows={2}
+                    placeholder="Recommendation 1&#10;Recommendation 2"
+                    value={currentProject.business_recommendations?.join('\n') || ''}
+                    onChange={(e) => setCurrentProject({ ...currentProject, business_recommendations: e.target.value.split('\n').map(s => s.trim()).filter(Boolean) })}
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
+                  />
+                </div>
               </div>
 
               {/* Tech Stack & Algorithms */}
@@ -552,7 +567,7 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({ projects, onRefr
               </div>
 
               {/* Artifacts URLs Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
                 <div>
                   <label className="block text-xs font-mono text-slate-500 mb-1">GitHub URL</label>
                   <input
@@ -568,7 +583,7 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({ projects, onRefr
                   <label className="block text-xs font-mono text-slate-500 mb-1">Notebook URL</label>
                   <input
                     type="url"
-                    placeholder="https://colab.research.google.com/..."
+                    placeholder="https://colab.research..."
                     value={currentProject.notebook_url || ''}
                     onChange={(e) => setCurrentProject({ ...currentProject, notebook_url: e.target.value })}
                     className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
@@ -582,6 +597,17 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({ projects, onRefr
                     placeholder="https://.../report.pdf"
                     value={currentProject.report_url || ''}
                     onChange={(e) => setCurrentProject({ ...currentProject, report_url: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-1">Tableau Dashboard URL</label>
+                  <input
+                    type="url"
+                    placeholder="https://public.tableau.com/..."
+                    value={currentProject.tableau_url || ''}
+                    onChange={(e) => setCurrentProject({ ...currentProject, tableau_url: e.target.value })}
                     className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono text-slate-900 dark:text-white"
                   />
                 </div>
