@@ -136,6 +136,16 @@ export const ExperienceManager: React.FC<ExperienceManagerProps> = ({ experience
                   />
                 </div>
                 <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-1">Official Employment Title</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Lead Technical Specialist"
+                    value={editingExp.official_designation || ''}
+                    onChange={(e) => setEditingExp({ ...editingExp, official_designation: e.target.value })}
+                    className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-mono"
+                  />
+                </div>
+                <div>
                   <label className="block text-xs font-mono text-slate-500 mb-1">Company</label>
                   <input
                     type="text"

@@ -106,13 +106,21 @@ export interface Profile {
 export interface Experience {
   id: string;
   role: string;
+  official_designation?: string;
   company: string;
   client?: string;
+  project?: string;
   location: string;
   period: string;
   is_current: boolean;
   highlights: string[];
   technologies: string[];
+  category_tags?: string[];
+  project_highlight?: {
+    title: string;
+    description: string;
+    bullets: string[];
+  };
   display_order: number;
 }
 

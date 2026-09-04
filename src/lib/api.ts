@@ -243,7 +243,30 @@ export async function fetchExperiences(): Promise<Experience[]> {
       console.warn('Supabase fetchExperiences error:', e);
     }
   }
-  return getLocal<Experience[]>(LOCAL_KEYS.EXPERIENCES, initialExperiences);
+
+  const local = getLocal<Experience[]>(LOCAL_KEYS.EXPERIENCES, initialExperiences);
+  const merged = initialExperiences.map(initExp => {
+    const found = local.find(l => l.id === initExp.id);
+    return {
+      ...initExp,
+      ...(found || {}),
+      role: initExp.role,
+      official_designation: initExp.official_designation,
+      company: initExp.company,
+      client: initExp.client,
+      project: initExp.project,
+      location: initExp.location,
+      period: initExp.period,
+      highlights: initExp.highlights,
+      technologies: initExp.technologies,
+      category_tags: initExp.category_tags,
+      project_highlight: initExp.project_highlight
+    };
+  });
+  const extras = local.filter(l => !initialExperiences.some(ie => ie.id === l.id));
+  const all = [...merged, ...extras];
+  setLocal(LOCAL_KEYS.EXPERIENCES, all);
+  return all;
 }
 
 export async function saveExperience(exp: Experience): Promise<Experience> {
