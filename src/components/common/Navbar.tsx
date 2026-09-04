@@ -105,11 +105,27 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </Link>
                 );
               }
-              const targetHref = isHomePage ? link.href.replace('/', '') : link.href;
+
+              // Anchor links (e.g. #about, #projects, #experience, #education, #certifications, #contact)
+              const sectionId = link.href.replace('/#', '');
+              const handleClick = (e: React.MouseEvent) => {
+                if (isHomePage) {
+                  e.preventDefault();
+                  const targetEl = document.getElementById(sectionId);
+                  if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                    window.history.pushState(null, '', `#${sectionId}`);
+                  }
+                }
+              };
+
+              const targetHref = isHomePage ? `#${sectionId}` : `${import.meta.env.BASE_URL}#${sectionId}`;
+
               return (
                 <a
                   key={link.name}
                   href={targetHref}
+                  onClick={handleClick}
                   className="px-2.5 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 rounded-lg transition-colors font-mono"
                 >
                   {link.name}
@@ -177,12 +193,26 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </Link>
                 );
               }
-              const targetHref = isHomePage ? link.href.replace('/', '') : link.href;
+              // Anchor links
+              const sectionId = link.href.replace('/#', '');
+              const handleClick = (e: React.MouseEvent) => {
+                setMobileMenuOpen(false);
+                if (isHomePage) {
+                  e.preventDefault();
+                  const targetEl = document.getElementById(sectionId);
+                  if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                    window.history.pushState(null, '', `#${sectionId}`);
+                  }
+                }
+              };
+
+              const targetHref = isHomePage ? `#${sectionId}` : `${import.meta.env.BASE_URL}#${sectionId}`;
               return (
                 <a
                   key={link.name}
                   href={targetHref}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={handleClick}
                   className="px-3 py-2 text-xs font-mono font-medium text-slate-700 dark:text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-400 rounded-lg flex items-center justify-between"
                 >
                   <span>{link.name}</span>

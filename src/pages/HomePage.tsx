@@ -78,6 +78,19 @@ export const HomePage: React.FC = () => {
     loadData();
   }, []);
 
+  // Handle direct hash navigation e.g. /#projects, /#about, /#experience, /#education, /#certifications, /#contact
+  useEffect(() => {
+    if (!isLoading && window.location.hash) {
+      const id = window.location.hash.replace('#', '');
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [isLoading]);
+
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] transition-colors duration-200">
       <Navbar resumeUrl={profile.resume_url} />
