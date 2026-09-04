@@ -3,7 +3,7 @@ import { Profile } from '../types';
 export const initialProfile: Profile = {
   id: 'rupesh-pandey-profile',
   full_name: 'Rupesh Kumar Pandey',
-  headline: 'Data Scientist | Machine Learning | Predictive Analytics | Customer & Supply Chain Analytics',
+  headline: 'Data Scientist | AI/ML | Gen AI | Predictive Modelling',
   supporting_statement: 'Transforming complex business problems into predictive models, actionable decisions, and measurable commercial value.',
   short_bio: 'Experienced in transforming business problems into analytical solutions using Python, SQL, Tableau, KNIME, Pandas, NumPy, Scikit-learn, statistical modeling, clustering, classification, forecasting, and data visualization.',
   extended_bio: [
