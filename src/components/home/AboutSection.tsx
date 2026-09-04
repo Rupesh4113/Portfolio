@@ -81,28 +81,6 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ profile }) => {
                 {paragraph}
               </p>
             ))}
-
-            {/* Core Pillars Bullet Highlights */}
-            <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className="flex items-start space-x-2.5 p-3 rounded-xl bg-slate-100 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60">
-                <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-                <span className="text-xs font-medium text-slate-800 dark:text-slate-200">
-                  Production ML Deployment into Blue Yonder TMS Enterprise Suites
-                </span>
-              </div>
-            </div>
-            <div className="flex items-start space-x-2.5 p-3 rounded-xl bg-slate-100 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60">
-              <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-              <span className="text-xs font-medium text-slate-800 dark:text-slate-200">
-                Master of Data Science (Global) from Deakin University (2025)
-              </span>
-            </div>
-            <div className="flex items-start space-x-2.5 p-3 rounded-xl bg-slate-100 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60">
-              <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-              <span className="text-xs font-medium text-slate-800 dark:text-slate-200">
-                Executive BI & Data Storytelling (Power BI & Tableau)
-              </span>
-            </div>
           </div>
         </div>
 
