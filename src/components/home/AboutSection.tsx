@@ -49,7 +49,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ profile }) => {
       title: 'Business Domains',
       icon: Building2,
       color: 'text-purple-500 bg-purple-500/10 border-purple-500/20',
-      description: 'Cross-industry domain understanding from logistics fulfillment and retail margins to commercial avionics systems.',
+      description: 'Cross-industry domain understanding from logistics fulfillment and retail margins to aviation.',
       skills: ['Transportation & Logistics', 'Retail', 'Telecom', 'Aviation']
     }
   ];
