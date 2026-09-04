@@ -179,21 +179,22 @@ export const Hero: React.FC<HeroProps> = ({ profile }) => {
                 {/* Quick Info Grid */}
                 <div className="space-y-3 font-mono text-xs">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
-                    <span className="text-slate-500">Domain</span>
-                    <span className="font-semibold text-slate-800 dark:text-slate-200">
+                    <span className="text-slate-500 shrink-0">Domain</span>
+                    <span className="font-semibold text-slate-800 dark:text-slate-200 text-right">
                       Supply Chain & Retail
                     </span>
                   </div>
                   <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
-                    <span className="text-slate-500">Core Stack</span>
-                    <span className="font-semibold text-slate-800 dark:text-slate-200">
-                      Python • XGBoost • SQL
+                    <span className="text-slate-500 shrink-0">Core Stack</span>
+                    <span className="font-semibold text-slate-800 dark:text-slate-200 text-right">
+                      Data Science & Gen AI
                     </span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500">Education</span>
-                    <span className="font-semibold text-cyan-600 dark:text-cyan-400">
-                      Master of Data Science (Deakin University)
+                  <div className="flex items-start justify-between gap-3 pt-0.5">
+                    <span className="text-slate-500 shrink-0 pt-0.5">Education</span>
+                    <span className="font-semibold text-cyan-600 dark:text-cyan-400 text-right leading-snug">
+                      Master of Data Science<br />
+                      <span className="text-[11px] text-slate-600 dark:text-slate-400 font-normal">(Deakin University)</span>
                     </span>
                   </div>
                 </div>
