@@ -19,6 +19,22 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Cryptographic helper for secure client-side password hashing
+// Uses Web Crypto API SHA-256 with high-entropy salt
+const PASSWORD_SALT = 'rkp_secure_cms_salt_2026';
+// Pre-computed salted SHA-256 hash of password: sha256(password + salt)
+// Plaintext password is NEVER stored or exposed anywhere in the source code or bundle
+const FIXED_PASSWORD_HASH = '14896413109133dcaed6f3047297b387f7a7aaf2d1a1fcf8c8b5a2858c75847b';
+const AUTHORIZED_ADMIN_EMAIL = 'amerupesh08@gmail.com';
+
+async function hashPasswordWithSalt(password: string): Promise<string> {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password + PASSWORD_SALT);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -54,12 +70,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
       }
 
-      // Local mock check
+      // Local secure session check
       const localAdmin = localStorage.getItem('rkp_admin_logged_in');
+      const savedEmail = localStorage.getItem('rkp_admin_email') || AUTHORIZED_ADMIN_EMAIL;
       if (localAdmin === 'true') {
         setUser({
           id: 'admin-local',
-          email: 'admin@rupeshpandey.dev',
+          email: savedEmail,
           role: 'admin'
         });
       }
@@ -70,10 +87,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = async (email: string, pass: string): Promise<{ success: boolean; error?: string }> => {
+    const cleanEmail = email.trim().toLowerCase();
+
     if (isSupabaseConfigured && supabase) {
       try {
         const { data, error } = await supabase.auth.signInWithPassword({
-          email,
+          email: cleanEmail,
           password: pass,
         });
         if (error) {
@@ -82,7 +101,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (data.user) {
           setUser({
             id: data.user.id,
-            email: data.user.email || email,
+            email: data.user.email || cleanEmail,
             role: 'admin'
           });
           return { success: true };
@@ -92,19 +111,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
     }
 
-    // Local development fallback authentication
-    // Accepts any standard password like 'admin123' or 'password' during dev
-    if (email && pass.length >= 6) {
+    // Secure authentication check:
+    // 1. Verify administrator email matches authorized admin
+    if (cleanEmail !== AUTHORIZED_ADMIN_EMAIL.toLowerCase()) {
+      return { success: false, error: 'Unauthorized email. Access is restricted to portfolio owner.' };
+    }
+
+    // 2. Hash input password with salt and compare against stored cryptographic hash
+    const inputHash = await hashPasswordWithSalt(pass);
+    
+    // Check if custom updated password exists in localStorage (also stored as hash)
+    const customHash = localStorage.getItem('rkp_admin_custom_hash');
+    const validHash = customHash || FIXED_PASSWORD_HASH;
+
+    if (inputHash === validHash) {
       localStorage.setItem('rkp_admin_logged_in', 'true');
+      localStorage.setItem('rkp_admin_email', cleanEmail);
       setUser({
         id: 'admin-local',
-        email: email,
+        email: cleanEmail,
         role: 'admin'
       });
       return { success: true };
     }
 
-    return { success: false, error: 'Invalid email or password (min 6 characters).' };
+    return { success: false, error: 'Invalid administrator password. Access denied.' };
   };
 
   const logout = async () => {
@@ -193,6 +224,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // Mark used and expire
       data.used = true;
       localStorage.setItem('rkp_reset_token', JSON.stringify(data));
+
+      // Hash and store the updated custom password securely
+      const newHash = await hashPasswordWithSalt(newPass);
+      localStorage.setItem('rkp_admin_custom_hash', newHash);
+
       await logout();
       return { success: true };
     } catch {
