@@ -319,8 +319,8 @@ export const businessCaseStudies: Project[] = [
     business_problem: 'Investigate declining sales performance and customer retention challenges across multiple quarters using structured sales, vehicle, and customer feedback databases to diagnose root causes and provide management recommendations.',
     business_objective: 'Author advanced SQL analytical workflows to extract quarterly sales trends, evaluate customer satisfaction distributions, analyze vehicle model performance, and support executive turnaround decision-making.',
     dataset_description: 'Relational database containing tables for customers, orders, order items, vehicles/products, shipping logistics, and customer post-delivery feedback ratings.',
-    dataset_size: '[Add Database Size / Records]',
-    data_sources: ['New Wheels MySQL production database', 'Customer feedback ratings', 'Order fulfillment tables'],
+    dataset_size: '8 Relational Tables (2,569 Orders, 2,814 Units, 1,600 Customers, 2,139 Survey Records / $121.01M Net Revenue)',
+    data_sources: ['New Wheels MySQL production database (8 normalized entities)', 'Customer feedback survey logs (2,139 records)', 'Shipping transit & dispatch fulfillment tables'],
     data_preparation: 'Engineered clean relational views using SQL DDL/DML, resolved orphan foreign keys, handled NULL values in customer feedback scores using CASE statements, and created indexed analytical summary tables.',
     methodology_steps: [
       'Database Schema Inspection & Entity Relationship Mapping',
@@ -343,9 +343,9 @@ export const businessCaseStudies: Project[] = [
       'Analytical Views and Table Index Optimization'
     ],
     eda_insights: [
-      'Sales revenue peaked in early quarters followed by a consistent quarter-over-quarter drop of [Add Quarterly Sales Trend %].',
-      'Cross-tabulation of delivery delays against customer feedback demonstrated that ratings plummeted from 4.6 to 2.8 when delivery took > 8 days.',
-      'Certain vehicle styles (sedans vs. SUVs) experienced dramatic performance divergence depending on customer geographic zones.'
+      'Sales revenue peaked in Q1 ($37.17M) followed by a continuous contraction of -41.5% through Q4 ($21.75M), with the sharpest drop in Q3 (-22.36% QoQ).',
+      'Cross-tabulation of delivery delays against customer feedback demonstrated that ratings plummeted from 4.61 stars (0-2 day delivery) down to 1.24 stars when delivery exceeded 8 days (Pearson r = -0.8155, p < 0.0001).',
+      'Two fulfillment hubs—Gulf Coast FC in Houston (47.20%) and Midwest Central in Chicago (20.39%)—accounted for 67.59% of all network delay days.'
     ],
     feature_engineering: [
       'Quarter-over-Quarter (QoQ) Sales Growth % via LAG() window functions',
@@ -357,29 +357,29 @@ export const businessCaseStudies: Project[] = [
     model_development: 'Engineered an end-to-end MySQL analytics repository comprising complex queries, views, and CTEs that output quarterly performance dashboards directly consumable by BI and leadership tools.',
     algorithms_used: ['Advanced SQL Analytics', 'Window Functions', 'Time-Based Cohort Analysis', 'Conditional Rating Aggregations', 'Trend Analysis'],
     evaluation_metrics: {
-      'Quarterly Sales Trend': '[Add Quarterly Sales Trend %]',
-      'Customer CSAT Score Impact': '[Add Rating Score]',
-      'Delivery Delay Correlation': '[Add Correlation Metric]',
-      'Identified Turnaround Upside': '[Add Revenue Impact]'
+      'Quarterly Sales Trend': '-41.5% (-22.36% Q3 QoQ)',
+      'Customer CSAT Score Impact': '4.61 → 1.24 Stars on >8d Delays',
+      'Delivery Delay Correlation': 'Pearson r = -0.8155 (p < 0.0001)',
+      'Identified Turnaround Upside': '+$5.25M Margin Recovery ($3.8M–$5.25M Leakage)'
     },
     primary_metric_label: 'Core Technology',
     primary_metric_value: 'MySQL & Advanced SQL',
-    results_summary: 'Pinpointed fulfillment logistics bottlenecks as the primary cause of declining customer ratings and repeat orders, equipping executives with clear SQL-backed operational remedies.',
+    results_summary: 'Pinpointed fulfillment logistics bottlenecks at Houston and Chicago facilities as the root cause of the -41.5% revenue decline and CSAT drop to 1.24, delivering SQL-backed turnaround strategies to recover $5.25M in discount leakage.',
     key_findings: [
-      'The sales decline was not driven by vehicle product defects, but by escalating shipping delays in Q3 and Q4.',
-      'Customers who experienced on-time delivery maintained a 4.5+ star rating and an 18% higher repeat purchase probability.',
-      'Window function queries revealed that 3 specific regional dispatch centers accounted for 64% of total shipping delays.'
+      'The sales decline was not driven by vehicle product defects, but by escalating shipping delays in Q3 and Q4 where nationwide on-time SLA collapsed from 86.49% to 56.70%.',
+      'Customers experiencing on-time delivery maintained a 4.61 star rating and 82%+ repeat purchase rate, whereas delays past 8 days caused ratings to drop to 1.24 stars.',
+      'Unconstrained panic discounting escalated from 4.33% to 12.30%, causing $5,247,866.48 in direct margin leakage with negative volume elasticity (r = -0.1688).'
     ],
     business_recommendations: [
-      'Overhaul regional dispatch contracts and tie carrier SLAs to delivery timeliness to reverse customer rating erosion.',
-      'Implement an automated customer care outreach protocol triggered immediately when an order exceeds 5 days in transit.',
-      'Focus commercial inventory promotions on vehicle models with top satisfaction ratings and proven fulfillment reliability.',
-      'Deploy real-time order-tracking notifications to manage customer expectations and preserve satisfaction scores.'
+      'Re-route 35% of Houston volume to Atlanta and 40% of Chicago volume to Detroit to eliminate 45% of delay days and restore SLA >= 82%.',
+      'Enforce a strict 5.0% discount ceiling to immediately recover $3.8M to $5.25M in unconstrained discount leakage.',
+      'Implement an automated customer care outreach protocol triggered at Day 4 with revised timelines and credit vouchers to protect CSAT.',
+      'Enforce carrier SLA compliance with 5% fee clawbacks on chronic delivery breaches, recovering $320,000 annually.'
     ],
     business_impact: [
-      'Identified operational bottlenecks responsible for [Add Business Metric] sales decline.',
-      'Projected customer rating recovery potential: [Add Rating Improvement]',
-      'Created standardized executive SQL analytical views for automated quarterly management reporting.'
+      'Identified operational bottlenecks responsible for -41.5% net sales decline (-$15.42M net contraction from Q1 to Q4)',
+      'Projected customer rating recovery potential: Restoring delayed order CSAT from 1.24 to >= 2.80+ stars (and overall average to 4.40+)',
+      'Recoverable margin upside: $5,247,866.48 in unconstrained discount leakage reclaimed + $320,000 in carrier SLA clawbacks'
     ],
     architecture_diagram_type: 'transportation_lane',
     quantitative_chart_type: 'new_wheels_sql',
