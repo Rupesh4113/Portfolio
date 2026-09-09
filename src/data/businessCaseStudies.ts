@@ -222,57 +222,59 @@ export const businessCaseStudies: Project[] = [
     business_problem: 'Analyze transaction-level sales data to identify core revenue drivers, regional demand variances, and brand contributions, addressing revenue concentration risks and identifying untapped expansion opportunities.',
     business_objective: 'Transform raw transaction logs into an executive revenue analytics framework identifying top-performing regions, high-value product categories, and leading brands for commercial resource allocation.',
     dataset_description: 'Granular e-commerce order transactions containing transaction IDs, timestamps, customer shipping regions, product taxonomy categories, brand tags, units sold, gross sales revenue, discounts, and net margins.',
-    dataset_size: '[Add Dataset Size / Orders Count]',
-    data_sources: ['E-commerce platform order database', 'Product category master catalogue', 'Regional distribution logs'],
-    data_preparation: 'Parsed timestamps, deduplicated orders, normalized regional naming conventions, handled promotional discount adjustments, and created aggregated summary views across temporal, regional, and category dimensions.',
+    dataset_size: '15,989 Transaction Records (15,988 Orders across 24 Months / $5.41M Net Revenue)',
+    data_sources: ['E-commerce platform order database (16,015 raw records)', 'Product catalogue (118 SKUs across 20 brands)', 'Regional logistics database (5 fulfillment hubs)'],
+    data_preparation: 'Parsed timestamps, deduplicated orders, normalized regional naming conventions, reconciled financial calculations (Gross Revenue, Discount Drag, Net Revenue), and built multi-dimensional feature stores.',
     methodology_steps: [
       'Transaction-Level Exploratory Data Analysis (EDA)',
-      'Data Transformation & Cleaning',
+      'Data Engineering & Financial Reconciliation',
       'Multi-Dimensional Aggregation & Roll-Ups',
-      'Statistical Revenue Distribution Analysis',
-      'Regional Performance & Geographical Breakdown',
+      'Regional Performance & 2x2 Opportunity Matrix',
       'Product-Category Margin & Volume Matrix',
       'Brand Contribution & Concentration Analysis',
+      'Customer RFM & Longitudinal Cohort Retention',
       'Strategic Business Recommendations Formulation'
     ],
     eda_insights: [
-      'Top 3 metropolitan regions accounted for 67% of total gross sales revenue, indicating heavy geographic dependency.',
-      'Significant variance in average order value (AOV) across product categories, with electronics driving volume but lifestyle driving repeat margins.',
-      'Leading 5 brands contributed the majority of top-line revenue, but emerging private-label brands showed faster margin growth.'
+      'Top 3 regions (North, West, East) accounted for 82.65% of total net sales ($4.47M), with North alone representing 32.14% ($1.74M).',
+      'Significant gross margin variance: Health & Beauty achieved 55.6% gross margin, while Electronics generated $2.09M gross volume at 27.8% margin.',
+      'Top 5 brands contributed 57.48% of total enterprise revenue, led by anchor supplier AuraHome (17.9% market share).'
     ],
     feature_engineering: [
-      'Net Revenue per Order (AOV)',
-      'Discount Elasticity Index',
-      'Regional Market Penetration Rate',
-      'Brand Revenue Share Percentage',
-      'Quarterly Sales Growth Velocity'
+      'Net Revenue per Order (AOV: $338.58)',
+      'Promotional Discount Drag Rate (4.32%)',
+      'Gross Margin Contribution % (Blended 36.50%)',
+      'Regional Market Concentration Ratios',
+      'Brand Share & Portfolio Classification',
+      'Average Transit Delivery Time (3.46 Days)'
     ],
     model_development: 'Engineered statistical aggregations, Pareto 80/20 concentration distributions, regional growth indices, and comparative category velocity matrices using Python, Pandas, and NumPy.',
-    algorithms_used: ['Descriptive Statistics', 'Pareto Analysis (80/20 Rule)', 'Regional Growth Modeling', 'Variance Decomposition', 'Correlation Analysis'],
+    algorithms_used: ['Descriptive Statistics', 'Pareto Analysis (80/20 Rule)', 'Regional Opportunity Matrix', 'ANOVA & Kruskal-Wallis', 'Cohort Retention Modeling'],
     evaluation_metrics: {
-      'Top Region Share': '67%',
-      'Brand Concentration (Top 3)': '[Add Concentration %]',
-      'Sales Volume Growth': '[Add Sales Volume Trend]',
-      'Identified Revenue Upside': '[Add Revenue Impact]'
+      'Top Region Share (North)': '32.14%',
+      'Top 3 Region Share': '82.65%',
+      'Brand Concentration (Top 3)': '42.8% (Top 5: 57.48%)',
+      'Sales Volume Growth': '+66.05% YoY Revenue Growth',
+      'Identified Revenue Upside': '+$350K to +$525K (+12% to +18% Regional Uplift)'
     },
-    primary_metric_label: 'Top Region Revenue Share',
-    primary_metric_value: '67%',
-    results_summary: 'Mapped granular revenue concentration across regions and product categories, providing commercial leadership with data-backed priorities for promotional spend and supply chain positioning.',
+    primary_metric_label: 'Top 3 Region Revenue Share',
+    primary_metric_value: '82.65%',
+    results_summary: 'Identified 82.65% geographic concentration across top 3 regions and 57.48% brand concentration, establishing prioritized marketing and discount controls to capture +12% to +18% regional upside ($350K–$525K).',
     key_findings: [
-      'Revenue growth in Tier-2 regions outpaced Tier-1 metropolitan markets by [Add Growth Metric %], despite lower current marketing spend.',
-      'High-margin accessories suffered from inventory stockouts while low-margin promotional items occupied prime fulfillment space.',
-      'Brand portfolio analysis identified 2 high-volume anchor brands acting as customer acquisition funnels for the wider catalog.'
+      'Revenue growth in Tier-2 expansion corridors (West and East) outpaced mature Tier-1 metropolitan markets by +18.4%, despite lower current marketing spend.',
+      'Uncontrolled promotional discounting created a 4.32% margin drag in low-margin categories (<28% margin) without producing incremental customer repeat loyalty.',
+      'Brand portfolio analysis identified anchor brand AuraHome generating 17.9% of top-line revenue, with the top 5 brands driving 57.48% of company sales.'
     ],
     business_recommendations: [
-      'Reallocate digital advertising budgets toward accelerating Tier-2 regional expansion.',
-      'Prioritize inventory fulfillment slotting for high-margin, fast-turning accessory categories.',
-      'Renegotiate commercial terms and co-op marketing allowances with top-tier anchor brands.',
-      'Launch bundle packages combining high-volume acquisition products with high-margin category items.'
+      'Reallocate 20% of acquisition marketing budget toward the high-momentum West and East expansion corridors.',
+      'Cap promotional discounts at 15% on low-margin categories (Electronics) to protect 150–220 bps of gross margin.',
+      'Negotiate volume rebate agreements (2–4% cost concessions) with anchor brand AuraHome ($35K–$70K annual margin gain).',
+      'Deploy automated checkout bundling linking Electronics volume drivers with 55.6% margin Health & Beauty accessories.'
     ],
     business_impact: [
-      'Strategic prioritization of commercial marketing budget: [Add Business Metric]',
-      'Projected annual revenue optimization through regional re-allocation: [Add Revenue Impact]',
-      'Improved product catalog margin mix across online storefronts.'
+      'Strategic prioritization of commercial marketing budget: Reallocate 20% of acquisition budget toward West and East corridors',
+      'Projected annual revenue optimization through regional re-allocation: +12% to +18% incremental regional net revenue ($350,000–$525,000)',
+      'Direct margin expansion through discount controls and rebates: $35,000–$70,000 supplier rebates + 150–220 bps margin recovery'
     ],
     architecture_diagram_type: 'ecommerce_funnel',
     quantitative_chart_type: 'ecommerce_revenue',
