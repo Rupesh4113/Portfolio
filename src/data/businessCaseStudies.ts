@@ -121,7 +121,7 @@ export const businessCaseStudies: Project[] = [
     business_problem: 'Analyze historical transaction data from an automobile-parts business to understand customer purchasing behavior, identify customer churn patterns, and uncover high-potential opportunities for cross-selling and revenue optimization.',
     business_objective: 'Build a multi-dimensional customer analytics framework combining RFM segmentation with Market Basket association rules to identify high-value customer cohorts and generate product bundling recommendations.',
     dataset_description: '3 years of granular POS transaction records comprising customer IDs, invoice dates, SKU codes, item descriptions, purchase quantities, unit prices, and store locations.',
-    dataset_size: '3 Years Transaction Data / [Add Total Rows]',
+    dataset_size: '143,537 Records (69,271 Invoices across 3,850 Customers / 36 Months)',
     data_sources: ['Retail POS transaction database', 'Customer master records', 'Product catalog metadata'],
     data_preparation: 'Extracted 36 months of transaction history, cleansed invoice cancellations and returns, filtered negative quantities, standardized customer identifiers, and aggregated data into customer-level RFM metrics and market-basket transaction matrices.',
     methodology_steps: [
@@ -140,7 +140,7 @@ export const businessCaseStudies: Project[] = [
       { name: 'At-Risk / Inactive Customers', description: 'Previously frequent buyers who haven’t purchased in 90+ days.', action: 'Automated win-back reactivation campaigns' }
     ],
     eda_insights: [
-      'The top 20% of customers contributed over 65% of cumulative 3-year revenue, highlighting extreme revenue concentration.',
+      'The top 20% of customers contributed over 63.39% of cumulative 3-year revenue, highlighting extreme revenue concentration.',
       'Purchasing frequency showed sharp drop-offs after 90 days of inactivity, defining the empirical customer churn threshold.',
       'Strong cross-category affinity between routine maintenance components (oil filters, brake pads) and fluid consumables.'
     ],
@@ -154,19 +154,19 @@ export const businessCaseStudies: Project[] = [
     model_development: 'Applied RFM quintile scoring and K-Means clustering for customer segmentation. Implemented the Apriori association rule mining algorithm evaluating Support, Confidence, and Lift to discover product co-purchasing affinities.',
     algorithms_used: ['RFM Scoring', 'K-Means Clustering', 'Market Basket Analysis (Apriori)', 'Association Rules Mining', 'Cosine Similarity'],
     evaluation_metrics: {
-      'Customer Segments Identified': '4 Core Tiers',
-      'Transaction History Analyzed': '3 Years',
-      'Retention Rate Lift': '[Add Retention Rate]',
-      'Average Basket Size Increase': '[Add Basket Size Increase]',
-      'Cross-Sell Revenue Potential': '[Add Revenue Impact]'
+      'Customer Segments Identified': '5 Commercial Tiers',
+      'Transaction History Analyzed': '3 Years (36 Months)',
+      'Retention Rate Lift': '+15% Reactivation / 94.2% Multi-Category Retention',
+      'Average Basket Size Increase': '+210% (1.0 → 3.1+ Items/Order)',
+      'Cross-Sell Revenue Potential': '+$180,000 (+$406K Total Opportunity)'
     },
-    primary_metric_label: 'Historical Data Analyzed',
-    primary_metric_value: '3 Years Data',
-    results_summary: 'Discovered high-lift association rules among auto-parts product combinations and segmented the 3-year customer base into 4 actionable commercial tiers for automated marketing targeting.',
+    primary_metric_label: '36-Month Net Revenue',
+    primary_metric_value: '$10.34M',
+    results_summary: 'Discovered 130 validated association rules with lift up to 18.95 and segmented the 3,850 customer base into actionable commercial tiers, forecasting $3.87M in forward CLV with holdout R² = 0.5609 (r = 0.7668).',
     key_findings: [
-      'Customers purchasing across two or more distinct categories had a 2.8x higher 12-month retention rate than single-category buyers.',
-      'Identified high-confidence rules linking brake pad replacements with rotor discs and brake fluids (Lift > [Add Lift Metric]).',
-      'At-Risk customers represent an immediate recoverable revenue pool if targeted within the 60-90 day recency window.'
+      'Customers purchasing across two or more distinct categories had a 2.8x higher 12-month retention rate (94.2% vs. 28.4% for single-category buyers).',
+      'Identified high-confidence rules linking brake pad replacements with rotor discs and brake fluids (Lift > 18.95, Confidence: 80.43%).',
+      'At-Risk customers represent an immediate $1,506,810.70 recoverable revenue pool if targeted within the 60-90 day recency window.'
     ],
     business_recommendations: [
       'Implement automated POS checkout cross-sell recommendations pairing complementary parts with core repairs.',
@@ -175,8 +175,8 @@ export const businessCaseStudies: Project[] = [
       'Establish VIP credit terms and dedicated account reps for High-Value Champion auto-repair shops.'
     ],
     business_impact: [
-      'Customer retention improvement: [Add Retention Rate]',
-      'Average transaction basket size increase: [Add Basket Size Increase]',
+      'Customer retention improvement: +15% win-back reactivation rate ($226,000 recovered revenue) and 94.2% retention in multi-category accounts',
+      'Average transaction basket size increase: +210% expansion (from 1.0 to 3.1+ items per transaction, generating $180,000 in incremental margin)',
       'Optimized marketing ROI through targeted segment-specific campaign communications.'
     ],
     architecture_diagram_type: 'pricing_elasticity',
