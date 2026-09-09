@@ -127,7 +127,7 @@ export async function fetchProjects(includeDrafts = false): Promise<Project[]> {
   }
 
   const local = getLocal<Project[]>(LOCAL_KEYS.PROJECTS, initialProjects);
-  // Guarantee canonical projects have updated architecture_diagram_type and quantitative_chart_type
+  // Guarantee canonical projects have updated architecture_diagram_type, quantitative_chart_type, and latest metric benchmarks
   const merged = initialProjects.map(initProj => {
     const found = local.find(l => l.id === initProj.id);
     return {
@@ -135,6 +135,11 @@ export async function fetchProjects(includeDrafts = false): Promise<Project[]> {
       ...(found || {}),
       architecture_diagram_type: initProj.architecture_diagram_type,
       quantitative_chart_type: initProj.quantitative_chart_type,
+      evaluation_metrics: initProj.evaluation_metrics,
+      model_comparison_data: initProj.model_comparison_data,
+      dataset_size: initProj.dataset_size,
+      business_impact: initProj.business_impact,
+      results_summary: initProj.results_summary,
     };
   });
   // Include any extra user-created projects from admin

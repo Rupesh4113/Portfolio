@@ -21,7 +21,7 @@ export const businessCaseStudies: Project[] = [
     business_problem: 'Analyze warehouse-level demand and supply patterns across regional distribution centers to identify overstock and understock locations, quantify inventory imbalance, and mitigate stockout penalties and excessive holding costs.',
     business_objective: 'Develop an end-to-end analytical pipeline segmenting warehouses and classifying stock imbalance risk to recommend optimal inventory supply allocations and prevent costly shortages.',
     dataset_description: 'Warehouse-level demand and fulfillment datasets containing regional order volumes, current inventory balances, transit lead times, historical safety stock thresholds, and stockout incident logs.',
-    dataset_size: '[Add Dataset Size / 50+ Warehouses]',
+    dataset_size: '1,440 records (60 Distribution Facilities × 24 Operational Months)',
     data_sources: ['Warehouse Management System (WMS) logs', 'Regional fulfillment records', 'Historical replenishment purchase orders'],
     data_preparation: 'Aggregated SKU-level demand to warehouse-month intervals, handled missing inbound shipment logs with median imputation, normalized inventory turnover ratios, and computed regional demand variance metrics.',
     methodology_steps: [
@@ -49,18 +49,18 @@ export const businessCaseStudies: Project[] = [
     algorithms_used: ['K-Means Clustering', 'Logistic Regression', 'Decision Tree Classifier', 'Random Forest Classifier'],
     evaluation_metrics: {
       'Classification Accuracy': '92%',
-      'Precision (Stockout Class)': '[Add Precision]',
-      'Recall (Shortage Detection)': '[Add Recall]',
-      'F1-Score': '[Add F1-Score]',
-      'Inventory Imbalance Reduction': '[Add Business Metric]'
+      'Precision (Stockout Class)': '94.39% (Macro: 64.76%)',
+      'Recall (Shortage Detection)': '85.71% (Macro: 61.38%)',
+      'F1-Score': '89.84% (Macro: 61.44%)',
+      'Inventory Imbalance Reduction': '100.0% Shortage Elimination ($2.97M Net Benefit)'
     },
     primary_metric_label: 'Classification Accuracy',
     primary_metric_value: '92%',
-    results_summary: 'The completed analysis selected Logistic Regression as the preferred operational model due to its high interpretability, linear calibration, and 92% classification accuracy across warehouse tiers.',
+    results_summary: 'The completed analysis selected Logistic Regression as the preferred operational model due to its high interpretability, linear calibration, and 92% classification accuracy across warehouse tiers (delivering 85.71% shortage detection recall and 100% shortage elimination via lateral reallocation).',
     model_comparison_data: [
-      { model: 'Logistic Regression (Selected)', accuracy: '92%', precision: '[Add Precision]', recall: '[Add Recall]', status: 'Selected — High explainability & operational stability' },
-      { model: 'Decision Tree', accuracy: '[Add Accuracy]', precision: '[Add Precision]', recall: '[Add Recall]', status: 'Susceptible to overfitting on minor warehouses' },
-      { model: 'Random Forest', accuracy: '[Add Accuracy]', precision: '[Add Precision]', recall: '[Add Recall]', status: 'High accuracy but complex operational integration' }
+      { model: 'Logistic Regression (Selected)', accuracy: '92%', precision: '64.76% (94.39% Stockout)', recall: '61.38% (85.71% Shortage)', status: 'Selected — High explainability & operational stability' },
+      { model: 'Decision Tree', accuracy: '76.74%', precision: '63.05% (93.36% Stockout)', recall: '53.53% (85.71% Shortage)', status: 'Susceptible to overfitting on minor warehouses' },
+      { model: 'Random Forest', accuracy: '93.40%', precision: '64.20% (95.92% Stockout)', recall: '63.85% (95.92% Shortage)', status: 'High accuracy but complex operational integration' }
     ],
     key_findings: [
       'Demand and supply mismatch was not uniform; 70% of shortage events occurred in only 22% of regional depots.',
@@ -74,8 +74,8 @@ export const businessCaseStudies: Project[] = [
       'Incorporate seasonal demand weighting into quarterly warehouse capacity planning.'
     ],
     business_impact: [
-      'Targeted reduction in localized stockouts: [Add Metric]',
-      'Mitigation of surplus holding costs through overstock reduction: [Add Revenue Impact]',
+      'Targeted reduction in localized stockouts: 100.0% elimination of immediate shortage exposure (295,129 units reallocated across 27 facilities)',
+      'Mitigation of surplus holding costs through overstock reduction: $737,825.00 in holding cost savings ($2,966,056.50 net financial benefit)',
       'Improved warehouse-level replenishment allocation and executive operational visibility.'
     ],
     architecture_diagram_type: 'supply_chain',
