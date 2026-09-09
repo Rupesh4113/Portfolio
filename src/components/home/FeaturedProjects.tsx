@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { 
   Search, 
   Filter, 
@@ -24,10 +25,34 @@ interface FeaturedProjectsProps {
 }
 
 export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
+  const { slug } = useParams<{ slug?: string }>();
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedType, setSelectedType] = useState<'all' | 'business' | 'benchmark'>('all');
   const [activeProject, setActiveProject] = useState<Project | null>(null);
+
+  // Sync active project with URL slug e.g. /#/projects/:slug
+  useEffect(() => {
+    if (slug && projects.length > 0) {
+      const found = projects.find(p => p.slug === slug || p.id === slug);
+      if (found) {
+        setActiveProject(found);
+      }
+    } else if (!slug) {
+      setActiveProject(null);
+    }
+  }, [slug, projects]);
+
+  const handleSelectProject = (proj: Project) => {
+    setActiveProject(proj);
+    navigate(`/projects/${proj.slug}`);
+  };
+
+  const handleCloseProject = () => {
+    setActiveProject(null);
+    navigate('/');
+  };
 
   // Categories covering all business case studies and quantitative ML
   const categories = [
@@ -253,7 +278,7 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
               <ProjectCard
                 key={project.id}
                 project={project}
-                onSelect={(proj) => setActiveProject(proj)}
+                onSelect={handleSelectProject}
               />
             ))}
           </div>
@@ -282,7 +307,7 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
         {/* Interactive Project Comparison Matrix */}
         <ProjectComparisonMatrix 
           projects={projects}
-          onSelectProject={(proj) => setActiveProject(proj)}
+          onSelectProject={handleSelectProject}
         />
 
         {/* Dedicated Telecom Customer Analytics Showcase */}
@@ -290,7 +315,7 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
           onOpenCaseStudy={() => {
             const telecomProj = projects.find(p => p.slug === 'customer-analytics-telecom-transferable' || p.domain.includes('Telecom'));
             if (telecomProj) {
-              setActiveProject(telecomProj);
+              handleSelectProject(telecomProj);
             }
           }}
         />
@@ -301,7 +326,7 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
       {activeProject && (
         <ProjectCaseStudyView
           project={activeProject}
-          onClose={() => setActiveProject(null)}
+          onClose={handleCloseProject}
         />
       )}
     </section>

@@ -17,6 +17,8 @@ export function App() {
         <HashRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/projects" element={<HomePage />} />
+            <Route path="/projects/:slug" element={<HomePage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/skills" element={<SkillsPage />} />
             <Route path="/admin" element={<AdminPage />} />
