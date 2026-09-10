@@ -624,7 +624,7 @@ export const businessCaseStudies: Project[] = [
     business_problem: 'Demonstrate how end-to-end customer analytics, behavioral segmentation, and classification modeling methodologies directly transfer to telecom industry challenges such as subscriber churn, lifetime value maximization, and recharge timing.',
     business_objective: 'Frame and showcase 6 core telecom analytical use cases powered by supervised classification algorithms and customer segmentation frameworks, highlighting transferable expertise without claiming direct telecom production tenure.',
     dataset_description: 'Telecom customer behavioral telemetry comprising subscriber tenure, contract types, monthly recharge history, data/voice usage statistics, customer service call logs, and churn status indicators.',
-    dataset_size: '[Add Telecom Cohort Size / Subscribers]',
+    dataset_size: '7,043 Subscribers (21 Raw Features & 11 Engineered Variables; 1,869 Churned / 5,174 Retained)',
     data_sources: ['Subscriber billing records', 'Call detail record (CDR) aggregations', 'Customer care interaction logs'],
     data_preparation: 'Engineered tenure duration bins, handled class imbalance using SMOTE and class-weighting, normalized continuous usage features, and one-hot encoded categorical contract attributes.',
     methodology_steps: [
@@ -691,23 +691,23 @@ export const businessCaseStudies: Project[] = [
       'Linear Discriminant Analysis (LDA)'
     ],
     evaluation_metrics: {
-      'ROC-AUC Score': '[Add Churn AUC]',
-      'Retention Model Lift': '[Add Retention Lift]',
-      'Classification Accuracy': '[Add Accuracy]',
-      'Precision (Churn Class)': '[Add Precision]',
-      'Recall (At-Risk Detection)': '[Add Recall]'
+      'ROC-AUC Score': '0.8415 (Holdout) / 0.8444 (LR)',
+      'Retention Model Lift': '1.98x Top Cohort Lift',
+      'Classification Accuracy': '76.44%',
+      'Precision (Churn Class)': '53.99%',
+      'Recall (At-Risk Detection)': '75.94% (81.55% Naive Bayes)'
     },
     primary_metric_label: 'Target Use Case',
     primary_metric_value: 'Telecom Retention & Churn',
-    results_summary: 'Ensemble tree models and calibrated Logistic Regression demonstrated strong discriminatory ability (ROC-AUC) in identifying at-risk subscribers, with high recall on the critical churn class.',
+    results_summary: 'Ensemble Random Forest delivered the highest balanced F1-score (0.6311) and 0.8415 ROC-AUC, while Naive Bayes achieved 81.55% sensitivity and Logistic Regression reached 0.8444 ROC-AUC in identifying high-risk churners.',
     model_comparison_data: [
-      { model: 'Random Forest', roc_auc: '[Add Churn AUC]', recall: '[Add Recall]', precision: '[Add Precision]', status: 'Strongest overall performer for non-linear behavioral interactions' },
-      { model: 'Logistic Regression', roc_auc: '[Add Churn AUC]', recall: '[Add Recall]', precision: '[Add Precision]', status: 'Highest explainability; clear odds-ratio weights for business teams' },
-      { model: 'SVM (RBF Kernel)', roc_auc: '[Add Churn AUC]', recall: '[Add Recall]', precision: '[Add Precision]', status: 'Effective decision boundary but computationally heavy on large subscriber bases' },
-      { model: 'Decision Tree', roc_auc: '[Add Churn AUC]', recall: '[Add Recall]', precision: '[Add Precision]', status: 'Transparent business decision rules; prone to variance' },
-      { model: 'KNN', roc_auc: '[Add Churn AUC]', recall: '[Add Recall]', precision: '[Add Precision]', status: 'Useful for local peer churn similarity analysis' },
-      { model: 'Naive Bayes', roc_auc: '[Add Churn AUC]', recall: '[Add Recall]', precision: '[Add Precision]', status: 'Fast probabilistic baseline; assumes feature independence' },
-      { model: 'LDA', roc_auc: '[Add Churn AUC]', recall: '[Add Recall]', precision: '[Add Precision]', status: 'Linear boundary benchmark for dimensionality reduction' }
+      { model: 'Random Forest', roc_auc: '0.8415', recall: '75.94%', precision: '53.99%', status: 'Strongest overall performer for non-linear behavioral interactions' },
+      { model: 'Logistic Regression', roc_auc: '0.8444', recall: '79.68%', precision: '50.94%', status: 'Highest explainability; clear odds-ratio weights for business teams' },
+      { model: 'SVM (RBF Kernel)', roc_auc: '0.8259', recall: '75.94%', precision: '53.89%', status: 'Effective decision boundary but computationally heavy on large subscriber bases' },
+      { model: 'Decision Tree', roc_auc: '0.8209', recall: '73.26%', precision: '51.80%', status: 'Transparent business decision rules; prone to variance' },
+      { model: 'KNN', roc_auc: '0.7653', recall: '69.25%', precision: '45.36%', status: 'Useful for local peer churn similarity analysis' },
+      { model: 'Naive Bayes', roc_auc: '0.8205', recall: '81.55%', precision: '47.29%', status: 'Fast probabilistic baseline; assumes feature independence' },
+      { model: 'LDA', roc_auc: '0.8411', recall: '80.21%', precision: '50.85%', status: 'Linear boundary benchmark for dimensionality reduction' }
     ],
     key_findings: [
       'Transferable customer analytics principles developed in retail and transportation apply directly to subscriber churn dynamics.',
@@ -721,8 +721,8 @@ export const businessCaseStudies: Project[] = [
       'Structure prepaid recharge push notifications 48 hours prior to predicted balance expiration.'
     ],
     business_impact: [
-      'Projected reduction in voluntary subscriber churn: [Add Business Metric]',
-      'Maximized retention budget efficiency through precision CLV targeting: [Add Revenue Impact]',
+      'Projected reduction in voluntary subscriber churn: 18% save rate across identified at-risk cohorts, protecting 54 accounts ($47,754 gross revenue) per 1,400 subscribers',
+      'Maximized retention budget efficiency through precision CLV targeting: 971.9% projected campaign ROI ($43,299 net financial impact against $4,455 campaign cost)',
       'Demonstrated transferable readiness for telecommunications customer analytics leadership.'
     ],
     architecture_diagram_type: 'telecom_churn',
@@ -738,10 +738,10 @@ export const businessCaseStudies: Project[] = [
       'Incorporate graph-based network analytics to detect social influence churn (when friends port out).',
       'Integrate natural language processing (NLP) on customer care chat transcripts for sentiment-driven churn signals.'
     ],
-    github_url: 'https://github.com/Rupesh4113',
-    notebook_url: 'https://github.com/Rupesh4113',
-    report_url: 'https://github.com/Rupesh4113',
-    analysis_url: 'https://github.com/Rupesh4113',
+    github_url: 'https://github.com/Rupesh4113/Customer-Analytics-Churn-Oriented-Modeling-Telecom-Transferable-Skills',
+    notebook_url: 'https://github.com/Rupesh4113/Customer-Analytics-Churn-Oriented-Modeling-Telecom-Transferable-Skills',
+    report_url: 'https://github.com/Rupesh4113/Customer-Analytics-Churn-Oriented-Modeling-Telecom-Transferable-Skills',
+    analysis_url: 'https://github.com/Rupesh4113/Customer-Analytics-Churn-Oriented-Modeling-Telecom-Transferable-Skills',
     thumbnail_url: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80',
     gallery_images: [
       'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80',
