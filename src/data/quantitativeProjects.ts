@@ -71,9 +71,10 @@ export const quantitativeProjects: Project[] = [
     future_improvements: [
       'Incorporate KNN-imputation and multivariate iterative imputer (MICE) for cross-sensor signal reconstruction.'
     ],
-    github_url: 'https://github.com/Rupesh4113/Portfolio',
-    notebook_url: 'https://github.com/Rupesh4113/Portfolio',
-    report_url: 'https://github.com/Rupesh4113/Portfolio',
+    github_url: 'https://github.com/Rupesh4113/Sensor-Data-Preprocessing-Feature-Engineering',
+    demo_url: 'https://sensor-data-preprocessing-feature-engineering.streamlit.app/',
+    notebook_url: 'https://github.com/Rupesh4113/Sensor-Data-Preprocessing-Feature-Engineering',
+    report_url: 'https://github.com/Rupesh4113/Sensor-Data-Preprocessing-Feature-Engineering',
     thumbnail_url: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
     gallery_images: [
       'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
@@ -153,9 +154,10 @@ export const quantitativeProjects: Project[] = [
     future_improvements: [
       'Experiment with t-SNE and UMAP non-linear manifold embeddings alongside spectral clustering.'
     ],
-    github_url: 'https://github.com/Rupesh4113/Portfolio',
-    notebook_url: 'https://github.com/Rupesh4113/Portfolio',
-    report_url: 'https://github.com/Rupesh4113/Portfolio',
+    github_url: 'https://github.com/Rupesh4113/Clustering-PCA-Analysis',
+    demo_url: 'https://clustering-pca-analysis.streamlit.app/',
+    notebook_url: 'https://github.com/Rupesh4113/Clustering-PCA-Analysis',
+    report_url: 'https://github.com/Rupesh4113/Clustering-PCA-Analysis',
     thumbnail_url: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80',
     gallery_images: [
       'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80',
@@ -236,9 +238,10 @@ export const quantitativeProjects: Project[] = [
     future_improvements: [
       'Implement ElasticNet hybrid regularization and spatial geographically weighted regression (GWR).'
     ],
-    github_url: 'https://github.com/Rupesh4113/Portfolio',
-    notebook_url: 'https://github.com/Rupesh4113/Portfolio',
-    report_url: 'https://github.com/Rupesh4113/Portfolio',
+    github_url: 'https://github.com/Rupesh4113/Real-Estate-Regression-Analysis',
+    demo_url: 'https://real-estate-regression-analysis.streamlit.app/',
+    notebook_url: 'https://github.com/Rupesh4113/Real-Estate-Regression-Analysis',
+    report_url: 'https://github.com/Rupesh4113/Real-Estate-Regression-Analysis',
     thumbnail_url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80',
     gallery_images: [
       'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80',
@@ -319,9 +322,10 @@ export const quantitativeProjects: Project[] = [
     future_improvements: [
       'Integrate Cox Proportional Hazards and DeepSurv survival neural networks to incorporate time-to-event censorship directly.'
     ],
-    github_url: 'https://github.com/Rupesh4113/Portfolio',
-    notebook_url: 'https://github.com/Rupesh4113/Portfolio',
-    report_url: 'https://github.com/Rupesh4113/Portfolio',
+    github_url: 'https://github.com/Rupesh4113/Liver-Cirrhosis-Survival-Prediction',
+    demo_url: 'https://liver-cirrhosis-survival-prediction.streamlit.app/',
+    notebook_url: 'https://github.com/Rupesh4113/Liver-Cirrhosis-Survival-Prediction',
+    report_url: 'https://github.com/Rupesh4113/Liver-Cirrhosis-Survival-Prediction',
     thumbnail_url: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80',
     gallery_images: [
       'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80',
@@ -403,9 +407,10 @@ export const quantitativeProjects: Project[] = [
     future_improvements: [
       'Incorporate graph neural networks (GNN) to scale from 4-node simulations to 118-node national transmission grids.'
     ],
-    github_url: 'https://github.com/Rupesh4113/Portfolio',
-    notebook_url: 'https://github.com/Rupesh4113/Portfolio',
-    report_url: 'https://github.com/Rupesh4113/Portfolio',
+    github_url: 'https://github.com/Rupesh4113/Electrical-Grid-Stability-Classification',
+    demo_url: 'https://electrical-grid-stability-classification.streamlit.app/',
+    notebook_url: 'https://github.com/Rupesh4113/Electrical-Grid-Stability-Classification',
+    report_url: 'https://github.com/Rupesh4113/Electrical-Grid-Stability-Classification',
     thumbnail_url: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80',
     gallery_images: [
       'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80',

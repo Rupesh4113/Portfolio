@@ -91,10 +91,11 @@ export const businessCaseStudies: Project[] = [
       'Incorporate real-time weather and transportation disruption telematics.',
       'Extend the framework into multi-echelon inventory optimization across central and regional hubs.'
     ],
-    github_url: 'https://github.com/Rupesh4113',
-    notebook_url: 'https://github.com/Rupesh4113',
-    report_url: 'https://github.com/Rupesh4113',
-    analysis_url: 'https://github.com/Rupesh4113',
+    github_url: 'https://github.com/Rupesh4113/Supply-Chain-Optimization-FMCG-Retail',
+    demo_url: 'https://supply-chain-optimization-fmcg-retail.streamlit.app/',
+    notebook_url: 'https://github.com/Rupesh4113/Supply-Chain-Optimization-FMCG-Retail',
+    report_url: 'https://github.com/Rupesh4113/Supply-Chain-Optimization-FMCG-Retail',
+    analysis_url: 'https://github.com/Rupesh4113/Supply-Chain-Optimization-FMCG-Retail',
     thumbnail_url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80',
     gallery_images: [
       'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80',
@@ -192,10 +193,11 @@ export const businessCaseStudies: Project[] = [
       'Implement real-time collaborative filtering for e-commerce auto-part suggestions.',
       'Integrate vehicle make/model/year compatibility data to personalize recommendations further.'
     ],
-    github_url: 'https://github.com/Rupesh4113',
-    notebook_url: 'https://github.com/Rupesh4113',
-    report_url: 'https://github.com/Rupesh4113',
-    analysis_url: 'https://github.com/Rupesh4113',
+    github_url: 'https://github.com/Rupesh4113/Customer-Buying-Patterns-Revenue-Optimization-Retail-Auto-Parts',
+    demo_url: 'https://customer-buying-patterns-revenue-optimization-retail-auto-part.streamlit.app/',
+    notebook_url: 'https://github.com/Rupesh4113/Customer-Buying-Patterns-Revenue-Optimization-Retail-Auto-Parts',
+    report_url: 'https://github.com/Rupesh4113/Customer-Buying-Patterns-Revenue-Optimization-Retail-Auto-Parts',
+    analysis_url: 'https://github.com/Rupesh4113/Customer-Buying-Patterns-Revenue-Optimization-Retail-Auto-Parts',
     thumbnail_url: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80',
     gallery_images: [
       'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1200&q=80',
@@ -289,10 +291,11 @@ export const businessCaseStudies: Project[] = [
       'Incorporate customer demographic census data for micro-targeted regional campaign planning.',
       'Build dynamic price elasticity models to optimize discount thresholds across product categories.'
     ],
-    github_url: 'https://github.com/Rupesh4113',
-    notebook_url: 'https://github.com/Rupesh4113',
-    report_url: 'https://github.com/Rupesh4113',
-    analysis_url: 'https://github.com/Rupesh4113',
+    github_url: 'https://github.com/Rupesh4113/E-Commerce-Revenue-Analytics-Retail-E-commerce',
+    demo_url: 'https://e-commerce-revenue-analytics-retail-e-commerce.streamlit.app/',
+    notebook_url: 'https://github.com/Rupesh4113/E-Commerce-Revenue-Analytics-Retail-E-commerce',
+    report_url: 'https://github.com/Rupesh4113/E-Commerce-Revenue-Analytics-Retail-E-commerce',
+    analysis_url: 'https://github.com/Rupesh4113/E-Commerce-Revenue-Analytics-Retail-E-commerce',
     thumbnail_url: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=800&q=80',
     gallery_images: [
       'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80',
@@ -394,10 +397,13 @@ export const businessCaseStudies: Project[] = [
       'Automate pipeline into a real-time operational dashboard connected to live ERP shipping events.',
       'Implement predictive lead-time models directly inside the SQL database using machine learning extensions.'
     ],
-    github_url: 'https://github.com/Rupesh4113',
-    notebook_url: 'https://github.com/Rupesh4113',
-    report_url: 'https://github.com/Rupesh4113',
-    analysis_url: 'https://github.com/Rupesh4113',
+    github_url: 'https://github.com/Rupesh4113/New-Wheels-Sales-Analytics-Automotive-Transportation',
+    demo_url: 'https://new-wheels-sales-analytics-automotive-transportation.streamlit.app/',
+    alternate_demo_url: 'https://new-wheels-sales-analytics-automotive-transportation-ef.streamlit.app/',
+    alternate_demo_label: '⚡ Optimization Demo',
+    notebook_url: 'https://github.com/Rupesh4113/New-Wheels-Sales-Analytics-Automotive-Transportation',
+    report_url: 'https://github.com/Rupesh4113/New-Wheels-Sales-Analytics-Automotive-Transportation',
+    analysis_url: 'https://github.com/Rupesh4113/New-Wheels-Sales-Analytics-Automotive-Transportation',
     thumbnail_url: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
     gallery_images: [
       'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80',
@@ -489,9 +495,10 @@ export const businessCaseStudies: Project[] = [
       'Incorporate external real-time weather and telematics data streams for proactive claim response.'
     ],
     tableau_url: 'https://public.tableau.com',
-    github_url: 'https://github.com/Rupesh4113',
-    report_url: 'https://github.com/Rupesh4113',
-    analysis_url: 'https://github.com/Rupesh4113',
+    github_url: 'https://github.com/Rupesh4113/Insurance-Claims-Analytics-Risk-Transportation-Adjacent',
+    demo_url: 'https://insurance-claims-analytics-risk-transportation-adjacent.streamlit.app/',
+    report_url: 'https://github.com/Rupesh4113/Insurance-Claims-Analytics-Risk-Transportation-Adjacent',
+    analysis_url: 'https://github.com/Rupesh4113/Insurance-Claims-Analytics-Risk-Transportation-Adjacent',
     thumbnail_url: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80',
     gallery_images: [
       'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
@@ -595,6 +602,7 @@ export const businessCaseStudies: Project[] = [
       'Experiment with deep learning temporal models (Temporal Fusion Transformers, Prophet).'
     ],
     github_url: 'https://github.com/Rupesh4113/Demand-Sales-Forecasting-Retail-FMCG-Supply-Chain',
+    demo_url: 'https://demand-sales-forecasting-retail-fmcg-supply-chain.streamlit.app/',
     notebook_url: 'https://github.com/Rupesh4113/Demand-Sales-Forecasting-Retail-FMCG-Supply-Chain',
     report_url: 'https://github.com/Rupesh4113/Demand-Sales-Forecasting-Retail-FMCG-Supply-Chain',
     analysis_url: 'https://github.com/Rupesh4113/Demand-Sales-Forecasting-Retail-FMCG-Supply-Chain',
@@ -739,6 +747,7 @@ export const businessCaseStudies: Project[] = [
       'Integrate natural language processing (NLP) on customer care chat transcripts for sentiment-driven churn signals.'
     ],
     github_url: 'https://github.com/Rupesh4113/Customer-Analytics-Churn-Oriented-Modeling-Telecom-Transferable-Skills',
+    demo_url: 'https://modeling-telecom-transferable-skills.streamlit.app/',
     notebook_url: 'https://github.com/Rupesh4113/Customer-Analytics-Churn-Oriented-Modeling-Telecom-Transferable-Skills',
     report_url: 'https://github.com/Rupesh4113/Customer-Analytics-Churn-Oriented-Modeling-Telecom-Transferable-Skills',
     analysis_url: 'https://github.com/Rupesh4113/Customer-Analytics-Churn-Oriented-Modeling-Telecom-Transferable-Skills',

@@ -22,6 +22,7 @@ import {
   Binary,
   Target,
   Sparkles,
+  Bot,
   Download
 } from 'lucide-react';
 import { Project } from '../../types';
@@ -46,6 +47,7 @@ export const ProjectCaseStudyView: React.FC<ProjectCaseStudyViewProps> = ({ proj
   const isProfessional = project.project_type === 'professional';
   const hasVisuals = Boolean(project.quantitative_chart_type);
   const hasArch = Boolean(project.architecture_diagram_type);
+  const isAi = project.is_ai_demo || project.category.toLowerCase().includes('genai');
   const [activeVisualTab, setActiveVisualTab] = useState<'analytics' | 'architecture'>('analytics');
 
   return (
@@ -79,6 +81,21 @@ export const ProjectCaseStudyView: React.FC<ProjectCaseStudyViewProps> = ({ proj
           </div>
 
           <div className="flex items-center space-x-2">
+            {project.demo_url && (
+              <a
+                href={project.demo_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold shadow-sm transition-all ${
+                  isAi
+                    ? 'bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white shadow-violet-500/20'
+                    : 'bg-cyan-600 hover:bg-cyan-500 text-white shadow-cyan-600/20'
+                }`}
+              >
+                {isAi ? <Bot className="w-3.5 h-3.5" /> : <ExternalLink className="w-3.5 h-3.5" />}
+                <span>{isAi ? '🤖 Try AI Demo' : '🚀 Live Demo'}</span>
+              </a>
+            )}
             {project.github_url && (
               <a
                 href={project.github_url}
@@ -665,13 +682,32 @@ export const ProjectCaseStudyView: React.FC<ProjectCaseStudyViewProps> = ({ proj
                       href={project.demo_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between p-2.5 rounded-xl bg-cyan-500 text-white font-semibold hover:bg-cyan-600 transition"
+                      className={`flex items-center justify-between p-3 rounded-xl text-white font-bold transition shadow-sm ${
+                        isAi
+                          ? 'bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-violet-500/20'
+                          : 'bg-cyan-600 hover:bg-cyan-500 shadow-cyan-600/20'
+                      }`}
                     >
                       <span className="flex items-center gap-2">
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        View Demo
+                        {isAi ? <Bot className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}
+                        {isAi ? '🤖 Launch AI Application' : '🚀 Launch Live Application'}
                       </span>
-                      <ExternalLink className="w-3.5 h-3.5" />
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
+
+                  {project.alternate_demo_url && (
+                    <a
+                      href={project.alternate_demo_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold border border-slate-200 dark:border-slate-700 transition"
+                    >
+                      <span className="flex items-center gap-2">
+                        <Sparkles className="w-3.5 h-3.5 text-cyan-500" />
+                        {project.alternate_demo_label || 'Alternate Application'}
+                      </span>
+                      <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
                     </a>
                   )}
                 </div>

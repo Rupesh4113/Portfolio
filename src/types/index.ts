@@ -54,6 +54,9 @@ export interface Project {
   future_improvements: string[];
   github_url?: string;
   demo_url?: string;
+  alternate_demo_url?: string;
+  alternate_demo_label?: string;
+  is_ai_demo?: boolean;
   notebook_url?: string;
   report_url?: string;
   analysis_url?: string;

@@ -1,6 +1,7 @@
 import { Project } from '../types';
 import { businessCaseStudies } from './businessCaseStudies';
 import { quantitativeProjects } from './quantitativeProjects';
+import { interactiveLiveProjects } from './interactiveLiveProjects';
 
 const existingEnterpriseProjects: Project[] = [
   // ==========================================
@@ -890,15 +891,20 @@ const existingEnterpriseProjects: Project[] = [
 
 export const initialProjects: Project[] = [
   ...businessCaseStudies,
+  ...interactiveLiveProjects.map((p, idx) => ({
+    ...p,
+    is_featured: true,
+    display_order: businessCaseStudies.length + idx + 1
+  })),
   ...quantitativeProjects.map((p, idx) => ({
     ...p,
     is_featured: false,
-    display_order: businessCaseStudies.length + idx + 1
+    display_order: businessCaseStudies.length + interactiveLiveProjects.length + idx + 1
   })),
   ...existingEnterpriseProjects.map((p, idx) => ({ 
     ...p, 
     is_featured: false,
-    display_order: businessCaseStudies.length + quantitativeProjects.length + idx + 1 
+    display_order: businessCaseStudies.length + interactiveLiveProjects.length + quantitativeProjects.length + idx + 1 
   }))
 ];
 

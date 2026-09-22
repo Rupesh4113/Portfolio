@@ -29,7 +29,7 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [selectedType, setSelectedType] = useState<'all' | 'business' | 'benchmark'>('all');
+  const [selectedType, setSelectedType] = useState<'all' | 'livedemo' | 'business' | 'benchmark'>('all');
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   // Sync active project with URL slug e.g. /#/projects/:slug
@@ -54,9 +54,10 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
     navigate('/');
   };
 
-  // Categories covering all business case studies and quantitative ML
+  // Categories covering all business case studies, GenAI, and quantitative ML
   const categories = [
     'All',
+    'GenAI & Agents',
     'Supply Chain & Retail',
     'Customer Analytics',
     'SQL Analytics',
@@ -75,7 +76,12 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
         const pCat = project.category.toLowerCase();
         const pDom = project.domain.toLowerCase();
 
-        if (selectedCategory === 'Supply Chain & Retail') {
+        if (selectedCategory === 'GenAI & Agents') {
+          const match = project.is_ai_demo || pCat.includes('genai') || pCat.includes('agent') || 
+                        pCat.includes('rag') || pCat.includes('llm') || pCat.includes('video') ||
+                        project.tech_stack.some(t => t.toLowerCase().includes('langgraph') || t.toLowerCase().includes('faiss') || t.toLowerCase().includes('gpt'));
+          if (!match) return false;
+        } else if (selectedCategory === 'Supply Chain & Retail') {
           const match = pCat.includes('supply') || pDom.includes('supply') || 
                         pCat.includes('retail') || pDom.includes('retail') || 
                         pCat.includes('fmcg') || pDom.includes('fmcg') || 
@@ -111,7 +117,9 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
       }
 
       // 2. Type Filter
-      if (selectedType === 'business') {
+      if (selectedType === 'livedemo') {
+        if (!project.demo_url) return false;
+      } else if (selectedType === 'business') {
         if (!project.id.startsWith('case-study') && project.project_type !== 'professional') return false;
       } else if (selectedType === 'benchmark') {
         if (!project.id.startsWith('quant-')) return false;
@@ -125,7 +133,8 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
         const inTech = project.tech_stack.some(t => t.toLowerCase().includes(q));
         const inAlgo = project.algorithms_used.some(a => a.toLowerCase().includes(q));
         const inDomain = project.domain.toLowerCase().includes(q);
-        if (!inTitle && !inSummary && !inTech && !inAlgo && !inDomain) {
+        const inDemo = q === 'demo' || q === 'streamlit' || q === 'live' ? Boolean(project.demo_url) : false;
+        if (!inTitle && !inSummary && !inTech && !inAlgo && !inDomain && !inDemo) {
           return false;
         }
       }
@@ -134,6 +143,7 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
     });
   }, [projects, selectedCategory, selectedType, searchQuery]);
 
+  const liveDemoCount = projects.filter(p => Boolean(p.demo_url)).length;
   const businessCount = projects.filter(p => p.id.startsWith('case-study') || p.project_type === 'professional').length;
   const benchmarkCount = projects.filter(p => p.id.startsWith('quant-')).length;
 
@@ -186,7 +196,7 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
             </div>
 
             {/* Scope Toggle Buttons */}
-            <div className="flex items-center p-1 rounded-xl bg-slate-200/60 dark:bg-slate-800/80 text-xs font-mono shrink-0">
+            <div className="flex items-center p-1 rounded-xl bg-slate-200/60 dark:bg-slate-800/80 text-xs font-mono shrink-0 overflow-x-auto">
               <button
                 onClick={() => setSelectedType('all')}
                 className={`px-3 py-1.5 rounded-lg transition-all ${
@@ -195,7 +205,19 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
-                All Projects ({projects.length})
+                All ({projects.length})
+              </button>
+
+              <button
+                onClick={() => setSelectedType('livedemo')}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                  selectedType === 'livedemo'
+                    ? 'bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-sm font-bold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Live Apps ({liveDemoCount})</span>
               </button>
 
               <button
@@ -213,7 +235,7 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
                 onClick={() => setSelectedType('benchmark')}
                 className={`px-3 py-1.5 rounded-lg transition-all ${
                   selectedType === 'benchmark'
-                    ? 'bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-sm font-semibold'
+                    ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm font-semibold'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
